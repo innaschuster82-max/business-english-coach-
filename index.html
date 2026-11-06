@@ -3,52 +3,50 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#12243a">
-<title>Business English Coach</title>
+<title>Business English Coach 1.2</title>
 <style>
-:root{font-family:system-ui,-apple-system,sans-serif;color:#17283b;background:#f4f7fa}
 *{box-sizing:border-box}
-body{margin:0}
-header{background:#12243a;color:white;padding:22px 18px}
-header h1{margin:0;font-size:23px}
-header p{margin:5px 0 0;color:#b8c9d8;font-size:13px}
-main{max-width:620px;margin:auto;padding:18px 15px 90px}
-nav{display:flex;gap:7px;overflow-x:auto;margin-bottom:20px}
-button{font:inherit;cursor:pointer;border:0;border-radius:11px;padding:12px 15px}
-nav button{background:#e4eaf0;color:#34465b;white-space:nowrap;font-size:13px}
+body{margin:0;background:#f3f6f9;color:#17283b;font-family:system-ui,-apple-system,sans-serif}
+header{background:#12243a;color:white;padding:23px 17px}
+header h1{font-size:23px;margin:0}
+header p{font-size:13px;color:#b9cadb}
+main{max-width:650px;margin:auto;padding:16px 14px 70px}
+nav{display:flex;gap:7px;overflow-x:auto;margin-bottom:18px}
+button{border:0;border-radius:11px;padding:12px;font:inherit;cursor:pointer}
+nav button{white-space:nowrap;background:#e1e8ee;font-size:13px}
 nav button.active{background:#12243a;color:white}
-.panel{background:white;border-radius:17px;padding:20px;margin-bottom:15px;box-shadow:0 3px 14px #15263b0a}
-h2{font-size:20px;margin:0 0 13px}
+.panel{background:white;padding:20px;border-radius:17px;margin-bottom:14px;box-shadow:0 3px 15px #13263a0a}
+h2{font-size:20px;margin:0 0 14px}
 h3{font-size:16px}
-.small{color:#65768a;font-size:13px;line-height:1.5}
+.small{font-size:13px;color:#62768a;line-height:1.6}
 .primary{background:#147e75;color:white}
 .secondary{background:#e6edf2;color:#17283b}
-.danger{background:#fae6e6;color:#a32b2b}
+.danger{background:#f8e0df;color:#a32929}
 .full{width:100%;margin-top:10px}
-.row{display:flex;gap:8px;flex-wrap:wrap}
+.row{display:flex;gap:8px}
 .row button{flex:1}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.stat{background:#edf5f4;border-radius:12px;text-align:center;padding:13px 5px}
-.stat strong{display:block;font-size:23px;color:#126d65}
-.stat span{font-size:11px;color:#516576}
-.card{min-height:230px;border:2px solid #dbe6ed;border-radius:18px;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;flex-direction:column;gap:15px;cursor:pointer;background:#fbfdfd}
-.card strong{font-size:24px;line-height:1.35}
-.card small{color:#60768b}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.stat{background:#edf5f4;border-radius:12px;padding:14px;text-align:center}
+.stat strong{font-size:24px;color:#116e65;display:block}
+.stat span{font-size:12px;color:#566b7e}
+.flash{border:2px solid #dce7ec;border-radius:17px;min-height:225px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:14px;padding:20px;background:#fbfdfd;cursor:pointer}
+.flash strong{font-size:24px;line-height:1.4}
+.flash small{color:#63778b}
 .hidden{display:none!important}
-label{display:block;font-size:13px;font-weight:650;margin:14px 0 6px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #cbd6df;border-radius:9px;font:inherit;background:white}
-progress{width:100%;height:12px;accent-color:#147e75}
-.item{padding:11px 0;border-bottom:1px solid #e9eef1}
+label{display:block;font-size:13px;font-weight:600;margin:13px 0 6px}
+input,textarea,select{width:100%;padding:12px;border:1px solid #cbd6df;border-radius:9px;font:inherit}
+.item{border-bottom:1px solid #e7edf1;padding:11px 0}
 .item:last-child{border:0}
-.notice{background:#fff5df;border-radius:10px;padding:12px;font-size:13px;line-height:1.5}
-footer{text-align:center;color:#8392a1;font-size:11px;padding:10px}
+.notice{background:#fff5dd;border-radius:10px;padding:12px;font-size:13px;line-height:1.5}
+progress{width:100%;height:12px;accent-color:#147e75}
 </style>
 </head>
 <body>
 <header>
 <h1>Business English Coach</h1>
-<p>Learn a little. Improve every day.</p>
+<p>Version 1.2 · Learn a little. Improve every day.</p>
 </header>
 <main>
 <nav>
@@ -64,21 +62,23 @@ footer{text-align:center;color:#8392a1;font-size:11px;padding:10px}
 <h2>Welcome back!</h2>
 <p class="small">Deine tägliche Business-English-Routine.</p>
 <div class="stats">
-<div class="stat"><strong id="total">0</strong><span>Karten</span></div>
-<div class="stat"><strong id="mastered">0</strong><span>Sicher</span></div>
-<div class="stat"><strong id="due">0</strong><span>Fällig</span></div>
+<div class="stat"><strong id="total">0</strong><span>Karten gesamt</span></div>
+<div class="stat"><strong id="mastered">0</strong><span>Sicher beherrscht</span></div>
+<div class="stat"><strong id="due">0</strong><span>Wiederholungen fällig</span></div>
+<div class="stat"><strong id="new">0</strong><span>Noch nicht gelernt</span></div>
 </div>
 </div>
 <div class="panel">
 <h2>Daily practice</h2>
 <p class="small" id="dailyInfo"></p>
-<button class="primary full" onclick="startLearn(false)">Tagestraining starten</button>
-<button class="secondary full" onclick="startLearn(true)">Mehr Karten lernen</button>
+<button class="primary full" onclick="start('daily')">Tagestraining starten</button>
+<button class="secondary full" onclick="start('extra')">Mehr neue Karten lernen</button>
+<button class="secondary full" onclick="start('review')">Bekannte Karten üben</button>
 </div>
 <div class="panel">
 <h3>Deine Lernplattform</h3>
-<p>✓ Karteikarten</p>
-<p class="small">Demnächst: Business Practice und Speaking Coach.</p>
+<p>✓ Karteikarten und Wiederholungen</p>
+<p class="small">Später: Business Practice und Speaking Coach.</p>
 </div>
 </section>
 
@@ -86,66 +86,64 @@ footer{text-align:center;color:#8392a1;font-size:11px;padding:10px}
 <div class="panel">
 <h2 id="sessionTitle">Karteikarten</h2>
 <p class="small" id="counter"></p>
-<div class="card" id="flashcard" onclick="flip()">
-<small id="sideLabel">DEUTSCH</small>
-<strong id="cardText"></strong>
-<small id="cardExample"></small>
-<small id="flipHint">Antippen zum Umdrehen</small>
+<div class="flash" onclick="flip()">
+<small id="side">DEUTSCH</small>
+<strong id="word"></strong>
+<small id="example"></small>
+<small id="hint">Antippen zum Umdrehen</small>
 </div>
-<div id="rating" class="hidden">
-<p class="small">Wie gut wusstest du die Übersetzung?</p>
+<div id="ratings" class="hidden">
+<p class="small">Wie sicher konntest du die Übersetzung abrufen?</p>
 <div class="row">
 <button class="danger" onclick="rate(0)">Nochmal</button>
 <button class="secondary" onclick="rate(1)">Unsicher</button>
 <button class="primary" onclick="rate(2)">Gewusst</button>
 </div>
 </div>
-<button class="secondary full" onclick="speak()">Englisch anhören 🔊</button>
-<button class="secondary full" onclick="startLearn(true)">Weitere Karten lernen</button>
+<button class="secondary full" onclick="speak()">🔊 Englisch anhören</button>
+<button class="secondary full" onclick="tab('home')">Training verlassen</button>
 </div>
 </section>
 
 <section id="cards" class="hidden">
 <div class="panel">
-<h2>Meine Vokabeln</h2>
-<p class="small">Neue Karte hinzufügen</p>
-<label>Deutsch</label>
-<input id="de" placeholder="Eine Annahme hinterfragen">
-<label>Englisch</label>
-<input id="en" placeholder="To challenge an assumption">
-<label>Kategorie</label>
-<input id="category" placeholder="Leadership">
-<label>Englischer Beispielsatz (optional)</label>
-<textarea id="example" rows="2"></textarea>
+<h2>Neue Karte hinzufügen</h2>
+<label>Deutsch</label><input id="de">
+<label>Englisch</label><input id="en">
+<label>Kategorie</label><input id="cat">
+<label>Englischer Beispielsatz</label><textarea id="ex"></textarea>
 <button class="primary full" onclick="addCard()">Karte speichern</button>
 </div>
 <div class="panel">
 <h2>CSV importieren</h2>
-<p class="small">Spalten: Deutsch, Englisch, Kategorie, Beispiel. Trennzeichen: Komma oder Semikolon. Die erste Zeile enthält die Überschriften.</p>
-<input type="file" id="csvFile" accept=".csv,text/csv">
-<button class="primary full" onclick="importCSV()">CSV importieren</button>
-<p class="small" id="importResult"></p>
+<p class="small">Spalten: Deutsch;Englisch;Kategorie;Beispiel</p>
+<input type="file" id="csv" accept=".csv,text/csv">
+<button class="primary full" onclick="importCSV()">Importieren</button>
+<p class="small" id="importStatus"></p>
 </div>
 <div class="panel">
-<h2>Alle Karten</h2>
-<input id="search" placeholder="Vokabel suchen..." oninput="renderCards()">
+<h2>Meine Karten</h2>
+<input id="search" placeholder="Karte suchen..." oninput="renderCards()">
 <div id="cardList"></div>
 </div>
 </section>
 
 <section id="progress" class="hidden">
 <div class="panel">
-<h2>Dein Lernfortschritt</h2>
+<h2>My Learning Progress</h2>
 <div class="stats">
 <div class="stat"><strong id="pTotal">0</strong><span>Gesamt</span></div>
+<div class="stat"><strong id="pStarted">0</strong><span>Begonnen</span></div>
 <div class="stat"><strong id="pMastered">0</strong><span>Sicher</span></div>
 <div class="stat"><strong id="pReviews">0</strong><span>Bewertungen</span></div>
 </div>
 <h3>Beherrschte Karten</h3>
 <progress id="bar" max="100" value="0"></progress>
 <p class="small" id="percentage"></p>
-<h3>Deine letzte Aktivität</h3>
-<p class="small" id="lastActivity"></p>
+<h3>Heute</h3>
+<p class="small" id="todayStats"></p>
+<h3>Bewertungshistorie</h3>
+<div id="history"></div>
 </div>
 </section>
 
@@ -153,30 +151,37 @@ footer{text-align:center;color:#8392a1;font-size:11px;padding:10px}
 <div class="panel">
 <h2>Lerneinstellungen</h2>
 <label>Neue Karten pro Tag</label>
-<select id="dailyLimit" onchange="saveLimit()">
-<option value="2">2 Karten</option>
-<option value="3">3 Karten</option>
-<option value="5">5 Karten</option>
+<select id="limit" onchange="saveLimit()">
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="5">5</option>
 </select>
-<p class="small">Du kannst jederzeit freiwillig zusätzliche Karten lernen.</p>
+<p class="small">Zusätzliches Lernen ist jederzeit möglich.</p>
 </div>
 <div class="panel">
 <h2>Datensicherung</h2>
-<button class="primary full" onclick="exportBackup()">Backup exportieren</button>
-<label>Backup wiederherstellen (JSON)</label>
+<button class="primary full" onclick="backup()">Backup exportieren</button>
+<label>Backup wiederherstellen</label>
 <input type="file" id="backupFile" accept=".json">
-<button class="secondary full" onclick="restoreBackup()">Backup importieren</button>
-<p class="notice">Deine Daten liegen lokal in diesem Browser. Lösche keine Website-Daten ohne vorher ein Backup zu erstellen. Ein anderes Gerät hat nicht automatisch denselben Lernstand.</p>
+<button class="secondary full" onclick="restore()">Backup importieren</button>
+<p class="notice">Der Lernstand liegt lokal auf diesem Gerät. Erstelle regelmäßig ein Backup. Ein anderes Gerät synchronisiert sich nicht automatisch.</p>
 </div>
 </section>
-<footer>Business English Coach · Version 1.1</footer>
 </main>
 
 <script>
-const KEY="businessEnglishCoach_v1";
+const OLD="businessEnglishCoach_v1";
+const KEY="businessEnglishCoach_v12";
 const DAY=86400000;
-const today=()=>new Date().toLocaleDateString("en-CA");
-const samples=[
+const $=id=>document.getElementById(id);
+const date=ms=>new Date(ms).toLocaleDateString("de-DE");
+const dayKey=ms=>{
+const d=new Date(ms);
+return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+};
+const today=()=>dayKey(Date.now());
+const uid=()=>crypto.randomUUID();
+const examples=[
 ["Eine Annahme hinterfragen","To challenge an assumption","Leadership"],
 ["Im Plan liegen","To be on track","Controlling"],
 ["Die zugrunde liegenden Probleme angehen","To address the underlying issues","Leadership"],
@@ -188,146 +193,188 @@ const samples=[
 ["Die wichtigsten Einflussfaktoren","The key drivers","Controlling"],
 ["Die Erwartungen erfüllen","To meet expectations","Leadership"]
 ];
-function makeCard(de,en,category="Allgemein",example=""){
-return {id:crypto.randomUUID(),de,en,category,example,
-level:0,due:0,seen:0,last:"",introduced:""};
+function make(de,en,category="Allgemein",example=""){
+return {id:uid(),de,en,category,example,
+level:0,due:0,seen:0,introduced:"",
+history:[],successDays:[],interval:0};
 }
-function fresh(){
-return {cards:samples.map(x=>makeCard(...x)),reviews:0,lastActivity:"",
-limit:2};
+function initial(){
+return {version:12,cards:examples.map(x=>make(...x)),limit:2,history:[]};
+}
+function migrate(old){
+const db={version:12,cards:[],limit:Number(old.limit)||2,history:[]};
+for(const c of old.cards){
+const n=make(c.de,c.en,c.category,c.example);
+n.id=c.id||uid();
+n.level=Number(c.level)||0;
+n.due=Number(c.due)||0;
+n.seen=Number(c.seen)||0;
+n.introduced=c.introduced|| (n.seen?"legacy":"");
+n.interval=Math.max(0,Math.round((n.due-Date.now())/DAY));
+n.legacy=true;
+db.cards.push(n);
+}
+return db;
 }
 function load(){
 try{
-const x=JSON.parse(localStorage.getItem(KEY));
-if(x&&Array.isArray(x.cards))return x;
+const current=JSON.parse(localStorage.getItem(KEY));
+if(current&&Array.isArray(current.cards))return current;
+const old=JSON.parse(localStorage.getItem(OLD));
+if(old&&Array.isArray(old.cards))return migrate(old);
 }catch(e){}
-return fresh();
+return initial();
 }
-let db=load(),queue=[],current=null,flipped=false,sessionExtra=false;
+let db=load(),queue=[],current=null,flipped=false,sessionMode="";
 function save(){
-try{localStorage.setItem(KEY,JSON.stringify(db));}
-catch(e){alert("Speichern fehlgeschlagen. Bitte Speicherplatz prüfen.");}
+try{
+localStorage.setItem(KEY,JSON.stringify(db));
+}catch(e){alert("Speichern fehlgeschlagen. Bitte Speicher prüfen.");}
 renderHome();
 }
+function status(c){
+if(!c.seen)return "Neu";
+if(c.successDays.length>=3&&c.interval>=14)return "Sicher";
+return "Im Lernprozess";
+}
+function due(){
+return db.cards.filter(c=>c.seen&&c.due<=Date.now());
+}
 function tab(name){
-document.querySelectorAll("main section").forEach(x=>x.classList.add("hidden"));
-document.getElementById(name).classList.remove("hidden");
-document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("active",x.dataset.tab===name));
+document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));
+$(name).classList.remove("hidden");
+document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===name));
+if(name==="home")renderHome();
 if(name==="cards")renderCards();
 if(name==="progress")renderProgress();
-if(name==="home")renderHome();
 }
-document.querySelectorAll("nav button").forEach(x=>x.onclick=()=>tab(x.dataset.tab));
-function dueCards(){return db.cards.filter(c=>c.seen>0&&c.due<=Date.now());}
-function newCards(){return db.cards.filter(c=>!c.introduced);}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>tab(b.dataset.tab));
 function renderHome(){
-document.getElementById("total").textContent=db.cards.length;
-document.getElementById("mastered").textContent=db.cards.filter(c=>c.level>=3).length;
-document.getElementById("due").textContent=dueCards().length;
-const count=db.cards.filter(c=>c.introduced===today()).length;
-document.getElementById("dailyInfo").textContent=
-count+" von "+db.limit+" neuen Karten heute begonnen · "+dueCards().length+" Wiederholungen fällig";
+$("total").textContent=db.cards.length;
+$("mastered").textContent=db.cards.filter(c=>status(c)==="Sicher").length;
+$("due").textContent=due().length;
+$("new").textContent=db.cards.filter(c=>!c.seen).length;
+const started=db.cards.filter(c=>c.introduced===today()).length;
+$("dailyInfo").textContent=started+" von "+db.limit+" neuen Karten begonnen · "+due().length+" Wiederholungen fällig";
 }
-function startLearn(extra){
-sessionExtra=extra;
-const due=dueCards().sort((a,b)=>a.due-b.due);
-const introduced=db.cards.filter(c=>c.introduced===today()).length;
-const allowance=Math.max(0,db.limit-introduced);
-const freshCards=newCards().slice(0,extra?db.cards.length:allowance);
-queue=[...due,...freshCards];
-document.getElementById("sessionTitle").textContent=extra?"Extra-Training":"Daily practice";
+function shuffle(a){
+for(let i=a.length-1;i>0;i--){
+const j=Math.floor(Math.random()*(i+1));
+[a[i],a[j]]=[a[j],a[i]];
+}
+return a;
+}
+function start(mode){
+sessionMode=mode;
+const overdue=due().sort((a,b)=>a.due-b.due);
+const fresh=shuffle(db.cards.filter(c=>!c.seen));
+const started=db.cards.filter(c=>c.introduced===today()).length;
+const allowance=Math.max(0,db.limit-started);
+if(mode==="daily")queue=[...overdue,...fresh.slice(0,allowance)];
+if(mode==="extra")queue=[...fresh];
+if(mode==="review")queue=shuffle(db.cards.filter(c=>c.seen));
+$("sessionTitle").textContent=mode==="daily"?"Daily practice":mode==="extra"?"Extra learning":"Review practice";
 tab("learn");
-nextCard();
+next();
 }
-function nextCard(){
+function next(){
 current=queue.shift()||null;
 flipped=false;
-document.getElementById("rating").classList.add("hidden");
+$("ratings").classList.add("hidden");
 if(!current){
-document.getElementById("cardText").textContent="Training abgeschlossen!";
-document.getElementById("sideLabel").textContent="GUT GEMACHT";
-document.getElementById("cardExample").textContent="";
-document.getElementById("flipHint").textContent="Du kannst jederzeit weitere Karten lernen.";
-document.getElementById("counter").textContent="";
+$("side").textContent="FERTIG";
+$("word").textContent="Training abgeschlossen!";
+$("example").textContent="";
+$("hint").textContent="Du kannst jederzeit weiterlernen.";
+$("counter").textContent="";
 return;
 }
-document.getElementById("sideLabel").textContent="DEUTSCH";
-document.getElementById("cardText").textContent=current.de;
-document.getElementById("cardExample").textContent="";
-document.getElementById("flipHint").textContent="Antippen zum Umdrehen";
-document.getElementById("counter").textContent=(queue.length+1)+" Karten in dieser Runde";
+$("side").textContent="DEUTSCH";
+$("word").textContent=current.de;
+$("example").textContent="";
+$("hint").textContent="Antippen zum Umdrehen";
+$("counter").textContent=(queue.length+1)+" Karten in dieser Runde";
 }
 function flip(){
 if(!current)return;
 flipped=!flipped;
-document.getElementById("sideLabel").textContent=flipped?"ENGLISCH":"DEUTSCH";
-document.getElementById("cardText").textContent=flipped?current.en:current.de;
-document.getElementById("cardExample").textContent=flipped?current.example:"";
-document.getElementById("rating").classList.toggle("hidden",!flipped);
+$("side").textContent=flipped?"ENGLISCH":"DEUTSCH";
+$("word").textContent=flipped?current.en:current.de;
+$("example").textContent=flipped?current.example:"";
+$("ratings").classList.toggle("hidden",!flipped);
 }
 function rate(score){
 if(!current||!flipped)return;
-const c=current;
+const c=current,now=Date.now();
 if(!c.introduced)c.introduced=today();
 c.seen++;
-c.last=today();
-db.reviews++;
-db.lastActivity=new Date().toISOString();
+const previous=c.interval||0;
+let interval=0;
 if(score===0){
 c.level=0;
-c.due=Date.now()+60000;
-queue.push(c);
+c.interval=0;
+c.due=now+5*60000;
 }else if(score===1){
 c.level=Math.max(1,c.level);
-c.due=Date.now()+DAY;
+c.interval=1;
+c.due=now+DAY;
 }else{
 c.level++;
-const intervals=[1,3,7,14,30,60,120];
-c.due=Date.now()+DAY*intervals[Math.min(c.level-1,intervals.length-1)];
+interval=previous<1?3:previous<3?7:previous<7?14:previous<14?30:previous<30?60:Math.min(180,previous*2);
+c.interval=interval;
+c.due=now+interval*DAY;
+if(!c.successDays.includes(today()))c.successDays.push(today());
 }
-save();nextCard();
+const event={id:uid(),cardId:c.id,de:c.de,en:c.en,
+timestamp:now,rating:score,interval:c.interval,due:c.due,
+mode:sessionMode};
+c.history.push(event);
+db.history.push(event);
+save();
+if(score===0){
+const later=Math.min(3,queue.length);
+queue.splice(later,0,c);
+}
+next();
 }
 function speak(){
 if(!current||!("speechSynthesis" in window))return;
 speechSynthesis.cancel();
 const u=new SpeechSynthesisUtterance(current.en);
-u.lang="en-GB";u.rate=.85;
-speechSynthesis.speak(u);
+u.lang="en-GB";u.rate=.85;speechSynthesis.speak(u);
 }
 function addCard(){
-const de=document.getElementById("de").value.trim();
-const en=document.getElementById("en").value.trim();
-if(!de||!en){alert("Deutsch und Englisch ausfüllen.");return;}
+const de=$("de").value.trim(),en=$("en").value.trim();
+if(!de||!en){alert("Deutsch und Englisch eingeben.");return;}
 if(db.cards.some(c=>c.de.toLowerCase()===de.toLowerCase()&&c.en.toLowerCase()===en.toLowerCase())){
-alert("Diese Karte existiert bereits.");return;
+alert("Karte existiert bereits.");return;
 }
-db.cards.push(makeCard(de,en,document.getElementById("category").value.trim()||"Allgemein",document.getElementById("example").value.trim()));
-["de","en","category","example"].forEach(id=>document.getElementById(id).value="");
-save();renderCards();alert("Karte gespeichert.");
+db.cards.push(make(de,en,$("cat").value.trim()||"Allgemein",$("ex").value.trim()));
+["de","en","cat","ex"].forEach(id=>$(id).value="");
+save();renderCards();
+alert("Karte gespeichert.");
 }
 function renderCards(){
-const q=document.getElementById("search").value.toLowerCase();
-const list=db.cards.filter(c=>(c.de+" "+c.en+" "+c.category).toLowerCase().includes(q));
-document.getElementById("cardList").replaceChildren();
-list.forEach(c=>{
+const q=$("search").value.toLowerCase();
+const root=$("cardList");root.replaceChildren();
+db.cards.filter(c=>(c.de+" "+c.en+" "+c.category).toLowerCase().includes(q)).forEach(c=>{
 const d=document.createElement("div");d.className="item";
 const b=document.createElement("strong");b.textContent=c.de;
 const p=document.createElement("div");p.textContent=c.en;
-const s=document.createElement("small");s.className="small";s.textContent=c.category;
-d.append(b,p,s);
-document.getElementById("cardList").append(d);
+const s=document.createElement("small");s.className="small";
+s.textContent=c.category+" · "+status(c)+(c.seen?" · Nächste: "+date(c.due):"");
+d.append(b,p,s);root.append(d);
 });
 }
-function parseCSV(text,delimiter){
+function parseCSV(text,sep){
 const rows=[],row=[];let field="",quoted=false;
 for(let i=0;i<text.length;i++){
 const ch=text[i];
 if(ch==='"'){
 if(quoted&&text[i+1]==='"'){field+='"';i++;}
 else quoted=!quoted;
-}else if(ch===delimiter&&!quoted){
-row.push(field);field="";
-}else if((ch==="\n"||ch==="\r")&&!quoted){
+}else if(ch===sep&&!quoted){row.push(field);field="";}
+else if((ch==="\n"||ch==="\r")&&!quoted){
 if(ch==="\r"&&text[i+1]==="\n")i++;
 row.push(field);field="";
 if(row.some(x=>x.trim()))rows.push([...row]);
@@ -339,69 +386,79 @@ if(row.some(x=>x.trim()))rows.push(row);
 return rows;
 }
 async function importCSV(){
-const file=document.getElementById("csvFile").files[0];
-if(!file){alert("Bitte CSV-Datei auswählen.");return;}
-const text=(await file.text()).replace(/^\uFEFF/,"");
+const f=$("csv").files[0];if(!f)return alert("CSV auswählen.");
+const text=(await f.text()).replace(/^\uFEFF/,"");
 const first=text.split(/\r?\n/)[0];
-const delimiter=(first.match(/;/g)||[]).length>(first.match(/,/g)||[]).length?";":",";
-const rows=parseCSV(text,delimiter);
-if(rows.length<2){alert("Keine Datensätze gefunden.");return;}
-const headers=rows.shift().map(x=>x.trim().toLowerCase());
-const get=(r,names)=>{const i=headers.findIndex(h=>names.includes(h));return i<0?"":(r[i]||"").trim();};
+const sep=(first.match(/;/g)||[]).length>(first.match(/,/g)||[]).length?";":",";
+const rows=parseCSV(text,sep);
+const heads=(rows.shift()||[]).map(s=>s.trim().toLowerCase());
+const get=(r,keys)=>{const i=heads.findIndex(h=>keys.includes(h));return i<0?"":(r[i]||"").trim();};
 let added=0,skipped=0;
 for(const r of rows){
 const de=get(r,["deutsch","de","german"]);
 const en=get(r,["englisch","en","english"]);
-if(!de||!en){skipped++;continue;}
-if(db.cards.some(c=>c.de.toLowerCase()===de.toLowerCase()&&c.en.toLowerCase()===en.toLowerCase())){skipped++;continue;}
-db.cards.push(makeCard(de,en,get(r,["kategorie","category"])||"Allgemein",get(r,["beispiel","example"])));
+if(!de||!en||db.cards.some(c=>c.de.toLowerCase()===de.toLowerCase()&&c.en.toLowerCase()===en.toLowerCase())){skipped++;continue;}
+db.cards.push(make(de,en,get(r,["kategorie","category"])||"Allgemein",get(r,["beispiel","example"])));
 added++;
 }
 save();renderCards();
-document.getElementById("importResult").textContent=added+" importiert, "+skipped+" übersprungen.";
+$("importStatus").textContent=added+" importiert, "+skipped+" übersprungen.";
 }
 function renderProgress(){
 const total=db.cards.length;
-const mastered=db.cards.filter(c=>c.level>=3).length;
-document.getElementById("pTotal").textContent=total;
-document.getElementById("pMastered").textContent=mastered;
-document.getElementById("pReviews").textContent=db.reviews;
-const percent=total?Math.round(mastered/total*100):0;
-document.getElementById("bar").value=percent;
-document.getElementById("percentage").textContent=percent+" % der Karten sicher beherrscht";
-document.getElementById("lastActivity").textContent=db.lastActivity?
-new Date(db.lastActivity).toLocaleString("de-DE"):"Noch keine Bewertung";
+const mastered=db.cards.filter(c=>status(c)==="Sicher").length;
+$("pTotal").textContent=total;
+$("pStarted").textContent=db.cards.filter(c=>c.seen).length;
+$("pMastered").textContent=mastered;
+$("pReviews").textContent=db.history.length;
+const pct=total?Math.round(mastered/total*100):0;
+$("bar").value=pct;
+$("percentage").textContent=pct+" % sicher beherrscht";
+const todayEvents=db.history.filter(e=>dayKey(e.timestamp)===today());
+$("todayStats").textContent=todayEvents.length+" Bewertungen heute · "+todayEvents.filter(e=>e.rating===2).length+" × Gewusst";
+const root=$("history");root.replaceChildren();
+if(!db.history.length){
+root.textContent="Noch keine detaillierte Historie. Frühere Bewertungen aus Version 1.1 sind nicht einzeln verfügbar.";
+return;
 }
-function saveLimit(){
-db.limit=Number(document.getElementById("dailyLimit").value);
-save();
+db.history.slice(-100).reverse().forEach(e=>{
+const d=document.createElement("div");d.className="item";
+const b=document.createElement("strong");b.textContent=e.de;
+const p=document.createElement("div");p.className="small";
+const label=["Nochmal","Unsicher","Gewusst"][e.rating];
+p.textContent=new Date(e.timestamp).toLocaleString("de-DE")+" · "+label+" · Nächste: "+new Date(e.due).toLocaleString("de-DE");
+d.append(b,p);root.append(d);
+});
 }
-function exportBackup(){
+function saveLimit(){db.limit=Number($("limit").value);save();}
+function backup(){
 const blob=new Blob([JSON.stringify(db,null,2)],{type:"application/json"});
-const url=URL.createObjectURL(blob);
-const a=document.createElement("a");
-a.href=url;a.download="business-english-backup.json";a.click();
+const url=URL.createObjectURL(blob),a=document.createElement("a");
+a.href=url;a.download="business-english-v12-backup.json";a.click();
 setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-async function restoreBackup(){
-const file=document.getElementById("backupFile").files[0];
-if(!file)return;
+async function restore(){
+const f=$("backupFile").files[0];if(!f)return;
 try{
-const data=JSON.parse(await file.text());
-if(!Array.isArray(data.cards)||!data.cards.every(c=>typeof c.de==="string"&&typeof c.en==="string"))throw Error();
-if(!confirm("Aktuelle Daten durch das Backup ersetzen?"))return;
-db=data;
+const raw=JSON.parse(await f.text());
+if(!Array.isArray(raw.cards)||!raw.cards.every(c=>typeof c.de==="string"&&typeof c.en==="string"))throw Error();
+if(!confirm("Aktuellen Lernstand durch dieses Backup ersetzen?"))return;
+db=raw.version===12?raw:migrate(raw);
+db.history=Array.isArray(db.history)?db.history:[];
 db.limit=Number(db.limit)||2;
-db.reviews=Number(db.reviews)||0;
 db.cards.forEach(c=>{
+c.history=Array.isArray(c.history)?c.history:[];
+c.successDays=Array.isArray(c.successDays)?c.successDays:[];
+c.interval=Number(c.interval)||0;
 c.level=Number(c.level)||0;
-c.due=Number(c.due)||0;
 c.seen=Number(c.seen)||0;
+c.due=Number(c.due)||0;
 });
-save();tab("home");alert("Backup wiederhergestellt.");
-}catch(e){alert("Ungültige Backup-Datei.");}
+save();$("limit").value=db.limit;tab("home");
+alert("Backup wiederhergestellt.");
+}catch(e){alert("Backup konnte nicht gelesen werden.");}
 }
-document.getElementById("dailyLimit").value=db.limit;
+$("limit").value=db.limit;
 save();tab("home");
 </script>
 </body>
