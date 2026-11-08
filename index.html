@@ -5,346 +5,1677 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#14283e">
-<title>Business English Coach 1.4</title>
+<title>Business English Coach 1.5</title>
 <style>
 :root{font-family:system-ui,-apple-system,sans-serif;color:#1d3040;background:#f2f5f7}
-*{box-sizing:border-box}body{margin:0}header{background:#14283e;color:white;padding:22px 16px}
-header div,main{max-width:720px;margin:auto}h1{font-size:23px;margin:0}header small{color:#c8d6df}
-main{padding:14px 13px 60px}nav{display:flex;gap:6px;overflow:auto;margin-bottom:12px}
+*{box-sizing:border-box}
+body{margin:0}
+header{background:#14283e;color:white;padding:22px 16px}
+header div,main{max-width:720px;margin:auto}
+h1{font-size:23px;margin:0}
+header small{color:#c8d6df}
+main{padding:14px 13px 60px}
+nav{display:flex;gap:6px;overflow:auto;margin-bottom:12px}
 button{font:inherit;border:0;padding:12px 14px;border-radius:10px;cursor:pointer;min-height:44px}
-nav button{flex-shrink:0;background:#e4ecf0;font-size:13px}nav .on{background:#14283e;color:white}
-section{display:none}section.on{display:block}.panel{padding:18px;background:white;border-radius:16px;margin:10px 0;box-shadow:0 2px 12px #15283a0b}
-h2{font-size:19px;margin:0 0 9px}h3{font-size:15px;margin:15px 0 7px}p{line-height:1.55}
-.muted,small{color:#637584;font-size:13px}.primary{background:#127b72;color:white}
-.secondary{background:#e7eff3;color:#213747}.danger{background:#fbe9e7;color:#9b3434}
-.outline{background:white;border:1px solid #cfdae2}.full{width:100%;margin-top:9px}
-.row{display:flex;gap:7px}.row button{flex:1;padding:12px 5px;font-size:14px}
+nav button{flex-shrink:0;background:#e4ecf0;font-size:13px}
+nav .on{background:#14283e;color:white}
+section{display:none}
+section.on{display:block}
+.panel{padding:18px;background:white;border-radius:16px;margin:10px 0;box-shadow:0 2px 12px #15283a0b}
+h2{font-size:19px;margin:0 0 9px}
+h3{font-size:15px;margin:15px 0 7px}
+p{line-height:1.55}
+.muted,small{color:#637584;font-size:13px}
+.primary{background:#127b72;color:white}
+.secondary{background:#e7eff3;color:#213747}
+.danger{background:#fbe9e7;color:#9b3434}
+.outline{background:white;border:1px solid #cfdae2}
+.full{width:100%;margin-top:9px}
+.row{display:flex;gap:7px}
+.row button{flex:1;padding:12px 5px;font-size:14px}
 .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .stat{background:#e8f4f1;border-radius:11px;padding:12px;text-align:center}
-.stat b{display:block;font-size:25px;color:#087167}.stat small{font-size:11px}
+.stat b{display:block;font-size:25px;color:#087167}
+.stat small{font-size:11px}
 .flash{width:100%;height:245px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:15px;padding:18px;background:#f7fbfa;border:2px solid #d9e9e5}
-.flash strong{font-size:23px;overflow-wrap:anywhere}.flash span{font-size:12px;color:#627a86}.flash em{font-size:14px}
+.flash strong{font-size:23px;overflow-wrap:anywhere}
+.flash span{font-size:12px;color:#627a86}
+.flash em{font-size:14px}
 label{display:block;font-weight:600;font-size:13px;margin:12px 0 5px}
-input,textarea,select{width:100%;border:1px solid #ccd8e0;border-radius:9px;padding:11px;font:inherit}textarea{min-height:75px}
-.item{padding:12px 0;border-bottom:1px solid #e7ecef}.item:last-child{border:0}
+input,textarea,select{width:100%;border:1px solid #ccd8e0;border-radius:9px;padding:11px;font:inherit}
+textarea{min-height:75px}
+.item{padding:12px 0;border-bottom:1px solid #e7ecef}
+.item:last-child{border:0}
 .item button{padding:5px 0;background:none;text-align:left;min-height:30px;width:100%}
 .badge{display:inline-block;padding:3px 9px;border-radius:20px;background:#e8eff3;font-size:12px}
 .note{background:#eef7f4;padding:12px;border-radius:10px;font-size:13px}
 .warning{background:#fff3dd;padding:12px;border-radius:10px;font-size:13px}
-.hidden{display:none!important}.history{max-height:450px;overflow:auto}progress{width:100%;accent-color:#127b72}
-button:disabled{opacity:.5}.mode-option{text-align:left}.mode-option b,.mode-option small{display:block}.mode-option small{margin-top:4px}
+.hidden{display:none!important}
+.history{max-height:450px;overflow:auto}
+progress{width:100%;accent-color:#127b72}
+button:disabled{opacity:.5}
+.activity-answer{border-left:3px solid #127b72;padding:10px 13px;background:#eef7f4;border-radius:8px}
+.activity-prompt{font-size:18px;font-weight:600;line-height:1.5}
+.routine{background:#e9f6f1;border:1px solid #b4d6cb;border-radius:12px;padding:12px;margin-bottom:12px}
+.mode-option{text-align:left}
+.mode-option b,.mode-option small{display:block}
+.mode-option small{margin-top:4px}
 @media(min-width:620px){.stats{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
 <body>
-<header><div><h1>Business English Coach</h1><small>Version 1.4 · Du bestimmst dein Lerntempo.</small></div></header>
+
+<header>
+<div>
+<h1>Business English Coach</h1>
+<small>Version 1.5 · Verstehen, anwenden, sprechen.</small>
+</div>
+</header>
+
 <main>
 <p id="warning" class="warning hidden"></p>
+
 <nav>
 <button data-page="home" class="on">Start</button>
 <button data-page="learn">Lernen</button>
+<button data-page="sentence">Sätze</button>
+<button data-page="speaking">Sprechen</button>
 <button data-page="cards">Karten</button>
 <button data-page="progress">Fortschritt</button>
 <button data-page="settings">Einstellungen</button>
 </nav>
+
+<div id="routineBar" class="routine hidden">
+<strong id="routineTitle">Deine 15-Minuten-Routine</strong>
+<p class="muted" id="routineTime"></p>
+<div class="row">
+<button id="routineNext" class="primary">Nächste Phase</button>
+<button id="routineStop" class="outline">Routine beenden</button>
+</div>
+</div>
+
 <section id="home" class="on">
-<div class="panel"><h2>Dein Lernüberblick</h2><p class="muted">Du entscheidest selbst, wie lange du lernst.</p>
-<div class="stats"><div class="stat"><b id="total">0</b><small>Karten</small></div><div class="stat"><b id="due">0</b><small>Jetzt fällig</small></div><div class="stat"><b id="fresh">0</b><small>Noch neu</small></div><div class="stat"><b id="mastered">0</b><small>Sicher</small></div></div></div>
-<div class="panel"><h2>Was möchtest du heute üben?</h2><p id="daily" class="muted"></p>
-<button id="startDaily" class="primary full mode-option"><b>1 · Tagestraining</b><small style="color:#e4f8f3">Fällige Wiederholungen und bis zu 2 neue Ausdrücke (Empfehlung)</small></button>
-<button id="startReview" class="secondary full mode-option"><b>2 · Nur bereits gelernte Karten</b><small>Keine neuen Karten · Wiederholungstermine bleiben unverändert</small></button>
-<button id="startNew" class="secondary full mode-option"><b>3 · Neue Karten lernen</b><small>Neue Ausdrücke ohne Tageslimit · du beendest selbst</small></button>
-<button id="resume" class="outline full hidden">Laufende Lernsitzung fortsetzen</button>
-<p id="upcoming" class="note"></p></div>
-<div class="panel"><h2>Deine 15-Minuten-Routine</h2><p><b>5 Minuten:</b> Karteikarten wiederholen</p><p><b>5 Minuten:</b> Einen Business-Satz bilden</p><p><b>5 Minuten:</b> Aktiv laut sprechen</p></div>
+<div class="panel">
+<h2>Dein Lernüberblick</h2>
+<p class="muted">Du entscheidest selbst, wie lange du lernst.</p>
+<div class="stats">
+<div class="stat"><b id="total">0</b><small>Karten</small></div>
+<div class="stat"><b id="due">0</b><small>Jetzt fällig</small></div>
+<div class="stat"><b id="fresh">0</b><small>Noch neu</small></div>
+<div class="stat"><b id="mastered">0</b><small>Sicher</small></div>
+</div>
+</div>
+
+<div class="panel">
+<h2>Was möchtest du heute üben?</h2>
+<p id="daily" class="muted"></p>
+
+<button id="startDaily" class="primary full mode-option">
+<b>1 · Tagestraining</b>
+<small style="color:#e4f8f3">Fällige Wiederholungen und neue Ausdrücke</small>
+</button>
+
+<button id="startReview" class="secondary full mode-option">
+<b>2 · Nur bereits gelernte Karten</b>
+<small>Keine neuen Karten · Wiederholungstermine bleiben unverändert</small>
+</button>
+
+<button id="startNew" class="secondary full mode-option">
+<b>3 · Neue Karten lernen</b>
+<small>Neue Ausdrücke ohne Tageslimit</small>
+</button>
+
+<button id="resume" class="outline full hidden">
+Laufende Lernsitzung fortsetzen
+</button>
+
+<p id="upcoming" class="note"></p>
+
+<div class="panel" style="padding:12px;background:#eef7f4">
+<h3>Deine geführte 15-Minuten-Routine</h3>
+<p class="muted">5 Minuten Karten · 5 Minuten Sätze · 5 Minuten Sprechen. Du kannst jederzeit weitergehen oder beenden.</p>
+<button id="routineStart" class="primary full">15-Minuten-Routine starten</button>
+</div>
+</div>
+
+<div class="panel">
+<h2>Deine 15-Minuten-Routine</h2>
+<p><b>5 Minuten:</b> Karteikarten wiederholen</p>
+<p><b>5 Minuten:</b> Einen Business-Satz bilden</p>
+<p><b>5 Minuten:</b> Aktiv laut sprechen</p>
+</div>
 </section>
-<section id="learn"><div class="panel"><h2>Dein Training</h2>
-<p id="sessionInfo" class="muted"></p><p><span id="mode" class="badge"></span> <span id="state" class="badge"></span></p>
-<button id="flash" class="flash"><span id="side">DEUTSCH</span><strong id="word">–</strong><em id="example"></em><span id="hint">Tippen zum Umdrehen</span></button>
-<div id="ratings" class="hidden"><p id="ratingText" class="muted">Wie sicher warst du?</p><div class="row"><button data-rating="0" class="danger">Nochmal</button><button data-rating="1" class="secondary">Unsicher</button><button data-rating="2" class="primary">Gewusst</button></div></div>
-<button id="speak" class="secondary full">🔊 Aussprache anhören</button><p id="waitInfo" class="muted"></p>
+
+<section id="learn">
+<div class="panel">
+<h2>Dein Training</h2>
+<p id="sessionInfo" class="muted"></p>
+<p><span id="mode" class="badge"></span> <span id="state" class="badge"></span></p>
+
+<button id="flash" class="flash">
+<span id="side">DEUTSCH</span>
+<strong id="word">–</strong>
+<em id="example"></em>
+<span id="hint">Tippen zum Umdrehen</span>
+</button>
+
+<div id="ratings" class="hidden">
+<p id="ratingText" class="muted">Wie sicher warst du?</p>
+<div class="row">
+<button data-rating="0" class="danger">Nochmal</button>
+<button data-rating="1" class="secondary">Unsicher</button>
+<button data-rating="2" class="primary">Gewusst</button>
+</div>
+</div>
+
+<button id="speak" class="secondary full">🔊 Aussprache anhören</button>
+<p id="waitInfo" class="muted"></p>
 <button id="nextNew" class="secondary full hidden">Weitere neue Karte lernen</button>
 <button id="practice" class="secondary full hidden">Bereits gelernte Karten frei üben</button>
 <button id="dailySwitch" class="secondary full hidden">Zum Tagestraining wechseln</button>
 <button id="end" class="outline full">Training selbst beenden</button>
-</div></section>
-<section id="cards"><div class="panel"><h2>Meine Karten</h2><input id="search" placeholder="Karte suchen"><label>Lernstatus</label>
-<select id="filter"><option>Alle</option><option>Neu</option><option>In Bearbeitung</option><option>Unsicher</option><option>Im Lernprozess</option><option>Sicher</option></select>
-<p id="cardCount" class="muted"></p><div id="cardList"></div></div>
-<div class="panel"><h2>Karte hinzufügen</h2><label>Deutsch</label><input id="de"><label>Englisch</label><input id="en"><label>Kategorie</label><input id="category" placeholder="z. B. Forecast"><label>Englisches Beispiel (optional)</label><textarea id="exampleInput"></textarea><button id="add" class="primary full">Karte speichern</button></div>
-<div class="panel"><h2>CSV importieren</h2><p class="muted">Spalten: Deutsch;Englisch;Kategorie;Beispiel</p><input id="csv" type="file" accept=".csv,text/csv"><button id="import" class="secondary full">CSV importieren</button><p id="importInfo" class="muted"></p></div></section>
-<section id="progress"><div class="panel"><h2>Dein Lernfortschritt</h2>
-<div class="stats"><div class="stat"><b id="started">0</b><small>Begonnen</small></div><div class="stat"><b id="secure">0</b><small>Sicher</small></div><div class="stat"><b id="rated">0</b><small>Lernbewertungen</small></div><div class="stat"><b id="practiced">0</b><small>Freie Übungen</small></div></div>
-<h3>Sicher beherrscht</h3><progress id="bar" max="100" value="0"></progress><p id="percent" class="muted"></p>
-<h3>Lernstatus</h3><div id="statusList"></div><h3>Heute</h3><p id="todayStats" class="muted"></p><h3>Bewertungshistorie</h3>
-<p class="muted">Freies Üben wird protokolliert, verschiebt aber keine geplanten Wiederholungstermine.</p><div id="history" class="history"></div></div></section>
-<section id="settings"><div class="panel"><h2>Einstellungen</h2><label>Empfohlene neue Karten pro Tag</label><select id="limit"><option value="2">2</option><option value="3">3</option><option value="5">5</option></select>
-<label>Aussprache</label><select id="accent"><option value="en-GB">Britisches Englisch</option><option value="en-US">Amerikanisches Englisch</option></select>
-<p class="muted">Das Tagesziel ist eine Empfehlung, keine Obergrenze.</p></div>
-<div class="panel"><h2>Datensicherung</h2><p class="warning">Deine Karten liegen lokal im Browser, nicht auf GitHub. Safari und eine Home-Bildschirm-App können getrennte Speicher haben. Bitte sichere deinen Stand regelmäßig.</p>
-<button id="backup" class="primary full">Backup-Datei speichern</button><button id="copy" class="secondary full">Backup-Text kopieren</button><p id="backupInfo" class="muted"></p>
-<h3>Backup wiederherstellen</h3><input id="restoreFile" type="file" accept=".json,application/json"><button id="restore" class="secondary full">Datei wiederherstellen</button>
-<label>Oder Backup-Text einfügen</label><textarea id="restoreText"></textarea><button id="restorePaste" class="secondary full">Text-Backup wiederherstellen</button></div></section>
+</div>
+</section>
+
+<section id="sentence">
+<div class="panel">
+<h2>Business-Sätze bilden</h2>
+<p class="muted">Verwende bekannte Redewendungen aktiv. Auch vorbereitete Situationen aus deinem Arbeitsalltag stehen bereit.</p>
+<label>Themengebiet</label>
+<select id="sentenceTopic">
+<option value="all">Alle Themen</option>
+<option>Group Controlling</option>
+<option>Budget & Forecast</option>
+<option>Projektgeschäft</option>
+<option>Management Reviews</option>
+<option>Leadership</option>
+</select>
+
+<p id="sentenceSource" class="badge"></p>
+<p id="sentencePrompt" class="activity-prompt"></p>
+
+<label>Deine englische Antwort (optional)</label>
+<textarea id="sentenceInput" placeholder="Schreibe deinen eigenen Satz auf Englisch ..."></textarea>
+<button id="sentenceReveal" class="secondary full">Musterlösung anzeigen</button>
+
+<div id="sentenceSolution" class="activity-answer hidden">
+<strong id="sentenceAnswer"></strong>
+<p id="sentenceAlt" class="muted"></p>
+</div>
+
+<div id="sentenceRatings" class="hidden">
+<p class="muted">Wie gut ist dir die Formulierung gelungen? Dies ist deine Selbsteinschätzung, keine automatische Korrektur.</p>
+<div class="row">
+<button data-activity="sentence" data-score="0" class="danger">Nochmal</button>
+<button data-activity="sentence" data-score="1" class="secondary">Teilweise</button>
+<button data-activity="sentence" data-score="2" class="primary">Gut</button>
+</div>
+</div>
+<button id="sentenceSkip" class="outline full">Andere Aufgabe</button>
+</div>
+</section>
+
+<section id="speaking">
+<div class="panel">
+<h2>Aktives Sprechtraining</h2>
+<p class="muted">Antworte zuerst laut, ohne die Musterlösung zu lesen. Eine Mikrofonaufnahme ist nicht erforderlich.</p>
+
+<label>Themengebiet</label>
+<select id="speakingTopic">
+<option value="all">Alle Themen</option>
+<option>Group Controlling</option>
+<option>Budget & Forecast</option>
+<option>Projektgeschäft</option>
+<option>Management Reviews</option>
+<option>Leadership</option>
+</select>
+
+<p id="speakingSource" class="badge"></p>
+<p id="speakingPrompt" class="activity-prompt"></p>
+<p class="note">Sprich deine Antwort laut aus. Vergleiche sie erst danach mit der Musterlösung. Die App nimmt dich nicht auf.</p>
+
+<button id="speakingReveal" class="secondary full">Musterantwort anzeigen</button>
+
+<div id="speakingSolution" class="activity-answer hidden">
+<strong id="speakingAnswer"></strong>
+<p id="speakingAlt" class="muted"></p>
+<button id="speakingListen" class="secondary full">🔊 Musterantwort anhören</button>
+</div>
+
+<div id="speakingRatings" class="hidden">
+<p class="muted">Wie flüssig konntest du antworten? Diese Bewertung ist eine Selbsteinschätzung.</p>
+<div class="row">
+<button data-activity="speaking" data-score="0" class="danger">Nochmal</button>
+<button data-activity="speaking" data-score="1" class="secondary">Mit Hilfe</button>
+<button data-activity="speaking" data-score="2" class="primary">Flüssig</button>
+</div>
+</div>
+
+<button id="speakingSkip" class="outline full">Andere Aufgabe</button>
+</div>
+</section>
+
+<section id="cards">
+<div class="panel">
+<h2>Meine Karten</h2>
+<input id="search" placeholder="Karte suchen">
+<label>Lernstatus</label>
+<select id="filter">
+<option>Alle</option>
+<option>Neu</option>
+<option>In Bearbeitung</option>
+<option>Unsicher</option>
+<option>Im Lernprozess</option>
+<option>Sicher</option>
+</select>
+<p id="cardCount" class="muted"></p>
+<div id="cardList"></div>
+</div>
+
+<div class="panel">
+<h2>Karte hinzufügen</h2>
+<label>Deutsch</label><input id="de">
+<label>Englisch</label><input id="en">
+<label>Kategorie</label><input id="category" placeholder="z. B. Forecast">
+<label>Englisches Beispiel (optional)</label>
+<textarea id="exampleInput"></textarea>
+<button id="add" class="primary full">Karte speichern</button>
+</div>
+
+<div class="panel">
+<h2>CSV importieren</h2>
+<p class="muted">Spalten: Deutsch;Englisch;Kategorie;Beispiel</p>
+<input id="csv" type="file" accept=".csv,text/csv">
+<button id="import" class="secondary full">CSV importieren</button>
+<p id="importInfo" class="muted"></p>
+</div>
+</section>
+
+<section id="progress">
+<div class="panel">
+<h2>Dein Lernfortschritt</h2>
+<div class="stats">
+<div class="stat"><b id="started">0</b><small>Begonnen</small></div>
+<div class="stat"><b id="secure">0</b><small>Sicher</small></div>
+<div class="stat"><b id="rated">0</b><small>Lernbewertungen</small></div>
+<div class="stat"><b id="practiced">0</b><small>Freie Übungen</small></div>
+</div>
+
+<h3>Sicher beherrscht</h3>
+<progress id="bar" max="100" value="0"></progress>
+<p id="percent" class="muted"></p>
+
+<h3>Lernstatus</h3>
+<div id="statusList"></div>
+
+<h3>Satz- und Sprechtraining</h3>
+<div class="stats">
+<div class="stat"><b id="sentenceTotal">0</b><small>Satzübungen</small></div>
+<div class="stat"><b id="speakingTotal">0</b><small>Sprechübungen</small></div>
+</div>
+
+<p id="activityToday" class="muted"></p>
+<div id="activityLog" class="history"></div>
+
+<h3>Heute</h3>
+<p id="todayStats" class="muted"></p>
+
+<h3>Bewertungshistorie</h3>
+<p class="muted">Freies Üben wird protokolliert, verschiebt aber keine geplanten Wiederholungstermine.</p>
+<div id="history" class="history"></div>
+</div>
+</section>
+
+<section id="settings">
+<div class="panel">
+<h2>Einstellungen</h2>
+<label>Empfohlene neue Karten pro Tag</label>
+<select id="limit">
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="5">5</option>
+</select>
+<label>Aussprache</label>
+<select id="accent">
+<option value="en-GB">Britisches Englisch</option>
+<option value="en-US">Amerikanisches Englisch</option>
+</select>
+<p class="muted">Das Tagesziel ist eine Empfehlung, keine Obergrenze.</p>
+</div>
+
+<div class="panel">
+<h2>Datensicherung</h2>
+<p class="warning">Deine Karten liegen lokal im Browser, nicht auf GitHub. Safari und eine Home-Bildschirm-App können getrennte Speicher haben. Bitte sichere deinen Stand regelmäßig.</p>
+<button id="backup" class="primary full">Backup-Datei speichern</button>
+<button id="copy" class="secondary full">Backup-Text kopieren</button>
+<p id="backupInfo" class="muted"></p>
+<h3>Backup wiederherstellen</h3>
+<input id="restoreFile" type="file" accept=".json,application/json">
+<button id="restore" class="secondary full">Datei wiederherstellen</button>
+<label>Oder Backup-Text einfügen</label>
+<textarea id="restoreText"></textarea>
+<button id="restorePaste" class="secondary full">Text-Backup wiederherstellen</button>
+</div>
+</section>
 </main>
+
 <script>
 "use strict";
-const KEY="businessEnglishCoach_v14", PREV="businessEnglishCoach_v13", PREV2="businessEnglishCoach_v12", OLD="businessEnglishCoach_v1";
-const MIN=60000, DAY=86400000;
-const $=id=>document.getElementById(id), clock=()=>Date.now();
-function date(t){const d=new Date(t);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
-const today=()=>date(clock());
-const fmt=t=>t?new Date(t).toLocaleString("de-DE",{dateStyle:"short",timeStyle:"short"}):"–";
-const uuid=()=>typeof crypto!=="undefined"&&crypto.randomUUID?crypto.randomUUID():"c"+clock().toString(36)+Math.random().toString(36).slice(2);
-const sample=[
-["Eine Annahme hinterfragen","To challenge an assumption","Leadership"],
-["Im Plan liegen","To be on track","Controlling"],
-["Die zugrunde liegenden Probleme angehen","To address the underlying issues","Leadership"],
-["Verantwortung übernehmen","To take ownership","Leadership"],
-["Verbesserungen vorantreiben","To drive improvements","Leadership"],
-["Die wichtigsten Abweichungen erläutern","To explain the key variances","Controlling"],
-["Eine Entscheidung treffen","To make a decision","Meetings"],
-["Den Forecast überarbeiten","To revise the forecast","Forecast"],
-["Die wichtigsten Einflussfaktoren","The key drivers","Controlling"],
-["Die Erwartungen erfüllen","To meet expectations","Leadership"]
-];
-function freshCard(de,en,category="Allgemein",example=""){
- return {id:uuid(),de,en,category,example,seen:0,level:0,interval:0,due:0,introduced:"",history:[],successDays:[],streakDays:0,lastRating:null};
+
+const KEY="businessEnglishCoach_v15";
+const PREV14="businessEnglishCoach_v14";
+const PREV="businessEnglishCoach_v13";
+const PREV2="businessEnglishCoach_v12";
+const OLD="businessEnglishCoach_v1";
+const MIN=60000;
+const DAY=86400000;
+
+const $=id=>document.getElementById(id);
+const clock=()=>Date.now();
+
+function date(t){
+ const d=new Date(t);
+ return d.getFullYear()+"-"+
+  String(d.getMonth()+1).padStart(2,"0")+"-"+
+  String(d.getDate()).padStart(2,"0");
 }
-function initial(){return {version:14,cards:sample.map(x=>freshCard(...x)),history:[],limit:2,accent:"en-GB",session:{active:false,type:"daily",ratings:0,practice:0,newCards:0}}}
-function valid(d){return d&&Array.isArray(d.cards)&&d.cards.every(c=>c&&typeof c.de==="string"&&typeof c.en==="string")}
+const today=()=>date(clock());
+const fmt=t=>t?new Date(t).toLocaleString("de-DE",{
+ dateStyle:"short",timeStyle:"short"
+}):"–";
+const uuid=()=>typeof crypto!=="undefined"&&crypto.randomUUID
+ ?crypto.randomUUID()
+ :"c"+clock().toString(36)+Math.random().toString(36).slice(2);
+
+const sample=[
+ ["Eine Annahme hinterfragen","To challenge an assumption","Leadership"],
+ ["Im Plan liegen","To be on track","Controlling"],
+ ["Die zugrunde liegenden Probleme angehen","To address the underlying issues","Leadership"],
+ ["Verantwortung übernehmen","To take ownership","Leadership"],
+ ["Verbesserungen vorantreiben","To drive improvements","Leadership"],
+ ["Die wichtigsten Abweichungen erläutern","To explain the key variances","Controlling"],
+ ["Eine Entscheidung treffen","To make a decision","Meetings"],
+ ["Den Forecast überarbeiten","To revise the forecast","Forecast"],
+ ["Die wichtigsten Einflussfaktoren","The key drivers","Controlling"],
+ ["Die Erwartungen erfüllen","To meet expectations","Leadership"]
+];
+
+function freshCard(de,en,category="Allgemein",example=""){
+ return {
+  id:uuid(),de,en,category,example,
+  seen:0,level:0,interval:0,due:0,introduced:"",
+  history:[],successDays:[],streakDays:0,lastRating:null
+ };
+}
+
+function initial(){
+ return {
+  version:15,
+  cards:sample.map(x=>freshCard(...x)),
+  history:[],
+  activityHistory:[],
+  routine:{active:false,step:0,phaseStart:0},
+  limit:2,accent:"en-GB",
+  session:{
+   active:false,type:"daily",ratings:0,practice:0,newCards:0
+  }
+ };
+}
+
+function valid(d){
+ return d&&Array.isArray(d.cards)&&d.cards.every(
+  c=>c&&typeof c.de==="string"&&typeof c.en==="string"
+ );
+}
+
 function normalize(raw){
  if(!valid(raw))throw Error("Ungültiges Backup.");
- const d=initial();d.cards=[];d.history=[];
+
+ const d=initial();
+ d.cards=[];
+ d.history=[];
+ d.activityHistory=Array.isArray(raw.activityHistory)
+  ?raw.activityHistory.filter(
+   e=>e&&["sentence","speaking"].includes(e.kind)&&
+    [0,1,2].includes(+e.score)
+  ).map(e=>({...e,score:+e.score}))
+  :[];
+
+ d.routine={active:false,step:0,phaseStart:0};
  d.limit=[2,3,5].includes(+raw.limit)?+raw.limit:2;
  d.accent=raw.accent==="en-US"?"en-US":"en-GB";
+
  if(raw.session&&typeof raw.session==="object"){
-   d.session={active:!!raw.session.active,type:["daily","review","new"].includes(raw.session.type)?raw.session.type:"daily",ratings:+raw.session.ratings||0,practice:+raw.session.practice||0,newCards:+raw.session.newCards||0};
+  d.session={
+   active:!!raw.session.active,
+   type:["daily","review","new"].includes(raw.session.type)
+    ?raw.session.type:"daily",
+   ratings:+raw.session.ratings||0,
+   practice:+raw.session.practice||0,
+   newCards:+raw.session.newCards||0
+  };
  }
+
  for(const x of raw.cards){
-  const c=freshCard(x.de,x.en,x.category||"Allgemein",x.example||"");
-  c.id=String(x.id||uuid());c.seen=+x.seen||0;c.level=+x.level||0;c.interval=+x.interval||0;c.due=+x.due||0;
+  const c=freshCard(
+   x.de,x.en,x.category||"Allgemein",x.example||""
+  );
+  c.id=String(x.id||uuid());
+  c.seen=+x.seen||0;
+  c.level=+x.level||0;
+  c.interval=+x.interval||0;
+  c.due=+x.due||0;
   c.introduced=x.introduced||(c.seen?"legacy":"");
   c.successDays=Array.isArray(x.successDays)?x.successDays:[];
   c.streakDays=+x.streakDays||0;
-  c.lastRating=[0,1,2].includes(x.lastScheduledRating)?x.lastScheduledRating:([0,1,2].includes(x.lastRating)?x.lastRating:null);
-  c.history=Array.isArray(x.history)?x.history.filter(e=>e&&[0,1,2].includes(+e.rating)).map(e=>({...e,cardId:c.id,timestamp:+e.timestamp||clock(),rating:+e.rating,kind:e.kind==="practice"||e.mode==="practice"?"practice":"scheduled"})):[];
+  c.lastRating=[0,1,2].includes(x.lastScheduledRating)
+   ?x.lastScheduledRating
+   :([0,1,2].includes(x.lastRating)?x.lastRating:null);
+
+  c.history=Array.isArray(x.history)
+   ?x.history.filter(
+    e=>e&&[0,1,2].includes(+e.rating)
+   ).map(e=>({
+    ...e,
+    cardId:c.id,
+    timestamp:+e.timestamp||clock(),
+    rating:+e.rating,
+    kind:e.kind==="practice"||e.mode==="practice"
+     ?"practice":"scheduled"
+   }))
+   :[];
+
   d.cards.push(c);
  }
- const all=Array.isArray(raw.history)?raw.history.filter(e=>e&&[0,1,2].includes(+e.rating)).map(e=>({...e,rating:+e.rating,timestamp:+e.timestamp||clock(),kind:e.kind==="practice"||e.mode==="practice"?"practice":"scheduled"})):[];
- for(const c of d.cards){for(const e of c.history){if(!all.some(x=>String(x.cardId)===c.id&&x.timestamp===e.timestamp&&x.rating===e.rating))all.push(e)}}
+
+ const all=Array.isArray(raw.history)
+  ?raw.history.filter(
+   e=>e&&[0,1,2].includes(+e.rating)
+  ).map(e=>({
+   ...e,
+   rating:+e.rating,
+   timestamp:+e.timestamp||clock(),
+   kind:e.kind==="practice"||e.mode==="practice"
+    ?"practice":"scheduled"
+  }))
+  :[];
+
+ for(const c of d.cards){
+  for(const e of c.history){
+   if(!all.some(x=>
+    String(x.cardId)===c.id&&
+    x.timestamp===e.timestamp&&
+    x.rating===e.rating
+   ))all.push(e);
+  }
+ }
+
  d.history=all.sort((a,b)=>a.timestamp-b.timestamp);
+
  for(const c of d.cards){
   c.history=d.history.filter(e=>String(e.cardId)===c.id);
   const past=c.history.filter(e=>e.kind!=="practice");
   if(past.length){
-   const last=past[past.length-1];c.lastRating=last.rating;
-   const days=new Set();for(let i=past.length-1;i>=0;i--){if(past[i].rating!==2)break;days.add(date(past[i].timestamp))}
+   const last=past[past.length-1];
+   c.lastRating=last.rating;
+   const days=new Set();
+   for(let i=past.length-1;i>=0;i--){
+    if(past[i].rating!==2)break;
+    days.add(date(past[i].timestamp));
+   }
    c.streakDays=days.size;
   }
  }
+
  return d;
 }
-let storageError="", storageBlocked=false;
-function get(k){try{const text=localStorage.getItem(k);return text?JSON.parse(text):null}catch(e){storageError="Gespeicherte Daten konnten nicht gelesen werden. Bitte kein neues Training beginnen, bevor die Daten gesichert wurden.";storageBlocked=true;return null}}
+
+let storageError="";
+let storageBlocked=false;
+
+function get(k){
+ try{
+  const text=localStorage.getItem(k);
+  return text?JSON.parse(text):null;
+ }catch(e){
+  storageError="Gespeicherte Daten konnten nicht gelesen werden. Bitte kein neues Training beginnen, bevor die Daten gesichert wurden.";
+  storageBlocked=true;
+  return null;
+ }
+}
+
 function load(){
- for(const k of [KEY,PREV,PREV2,OLD]){
+ for(const k of [KEY,PREV14,PREV,PREV2,OLD]){
   const raw=get(k);
   if(raw!==null){
-   if(!valid(raw)){storageError="Gespeicherte Daten in "+k+" sind ungültig. Bitte Sicherung prüfen.";storageBlocked=true;return initial()}
-   try{return normalize(raw)}catch(e){storageError="Datenübernahme fehlgeschlagen: "+e.message;storageBlocked=true;return initial()}
+   if(!valid(raw)){
+    storageError="Gespeicherte Daten in "+k+" sind ungültig. Bitte Sicherung prüfen.";
+    storageBlocked=true;
+    return initial();
+   }
+   try{
+    return normalize(raw);
+   }catch(e){
+    storageError="Datenübernahme fehlgeschlagen: "+e.message;
+    storageBlocked=true;
+    return initial();
+   }
   }
   if(storageBlocked)return initial();
  }
  return initial();
 }
-let db=load(), activeCard=null, mode="", revealed=false, forcedNew=false, reviewCount=new Map(), reviewDelay=new Map();
-function save(){if(storageBlocked)return false;try{localStorage.setItem(KEY,JSON.stringify(db));return true}catch(e){storageError="ACHTUNG: Lernstand konnte nicht gespeichert werden. Bitte Backup erstellen.";showWarning();return false}}
-function showWarning(){if(storageError){$("warning").textContent=storageError;$("warning").classList.remove("hidden")}}
-function status(c){if(!c.seen)return "Neu";if(c.lastRating===0)return "In Bearbeitung";if(c.lastRating===1)return "Unsicher";if(c.lastRating===2&&c.streakDays>=3&&c.interval>=14)return "Sicher";return "Im Lernprozess"}
+
+let db=load();
+let activeCard=null;
+let mode="";
+let revealed=false;
+let forcedNew=false;
+let reviewCount=new Map();
+let reviewDelay=new Map();
+
+function save(){
+ if(storageBlocked)return false;
+ try{
+  localStorage.setItem(KEY,JSON.stringify(db));
+  return true;
+ }catch(e){
+  storageError="ACHTUNG: Lernstand konnte nicht gespeichert werden. Bitte Backup erstellen.";
+  showWarning();
+  return false;
+ }
+}
+
+const SCENARIOS=[
+ ["Group Controlling","Erkläre: Die EBIT-Abweichung ist hauptsächlich auf höhere Projektkosten zurückzuführen.","The EBIT variance is mainly driven by higher project costs.","The shortfall is primarily attributable to increased project costs."],
+ ["Group Controlling","Erkläre, dass du die wesentlichen Ursachen der Ergebnisabweichung prüfen möchtest.","We need to examine the key drivers of the earnings variance.","We should identify the underlying reasons for the deviation."],
+ ["Group Controlling","Sage, dass du den Monatsbericht bis Freitag fertigstellen wirst.","I will finalize the monthly report by Friday.","The monthly report will be ready by Friday."],
+ ["Group Controlling","Erkläre, dass das Ergebnis unter dem Budget liegt.","Our result is below budget.","We are currently performing below our budgeted result."],
+ ["Group Controlling","Bitte die BU um eine nachvollziehbare Kommentierung der Abweichung.","Could you please provide a clear explanation of the variance?","Please explain the key drivers behind the variance."],
+ ["Group Controlling","Sage, dass die Zahlen auf konsistenten Daten basieren müssen.","The figures need to be based on consistent data.","We need to ensure data consistency across all reports."],
+
+ ["Budget & Forecast","Erkläre, dass der Forecast trotz Unsicherheiten realistisch bleiben muss.","The forecast needs to remain realistic despite the uncertainties.","We should reflect the risks without overstating them."],
+ ["Budget & Forecast","Sage, dass wir die Annahmen im Budget überprüfen sollten.","We should review the assumptions underlying the budget.","We need to challenge the key budget assumptions."],
+ ["Budget & Forecast","Erkläre, dass der Auftragseingang hinter den Erwartungen zurückbleibt.","Order intake is falling short of expectations.","We are seeing lower order intake than anticipated."],
+ ["Budget & Forecast","Sage, dass sich die geplante Leistung ins nächste Quartal verschiebt.","Part of the planned output is shifting into the next quarter.","Some of the planned work will be delayed until next quarter."],
+ ["Budget & Forecast","Erkläre, dass der Jahresausblick unverändert bleibt.","Our full-year outlook remains unchanged.","We are maintaining our forecast for the full year."],
+ ["Budget & Forecast","Bitte die Verantwortlichen, Risiken und Chancen im Forecast zu berücksichtigen.","Please take both risks and opportunities into account in the forecast.","Please reflect the latest risks and opportunities in your forecast."],
+
+ ["Projektgeschäft","Erkläre, dass Verzögerungen auf einzelnen Baustellen das Ergebnis belasten.","Delays on individual construction sites are putting pressure on earnings.","Project delays are negatively affecting profitability."],
+ ["Projektgeschäft","Frage, ob die Restkosten des Projekts aktualisiert wurden.","Have the remaining project costs been updated?","Have you revised the estimate of costs to complete?"],
+ ["Projektgeschäft","Sage, dass wir den Projektfortschritt genauer überwachen müssen.","We need to monitor project progress more closely.","We should strengthen our monitoring of project performance."],
+ ["Projektgeschäft","Erkläre, dass wir Nachträge frühzeitig identifizieren müssen.","We need to identify potential change orders at an early stage.","We should identify additional claims as early as possible."],
+ ["Projektgeschäft","Sage, dass die aktuelle Projektmarge unter der ursprünglichen Kalkulation liegt.","The current project margin is below the original estimate.","Project profitability has deteriorated compared with the initial calculation."],
+ ["Projektgeschäft","Frage, welche Maßnahmen geplant sind, um den Rückstand aufzuholen.","What measures are planned to catch up on the backlog?","What actions will you take to recover the delay?"],
+
+ ["Management Reviews","Leite die Besprechung ein und schlage vor, mit den Hauptabweichungen zu beginnen.","Let's start by looking at the key variances.","I suggest we begin with the main deviations from plan."],
+ ["Management Reviews","Bitte jemanden, den Einfluss auf das Jahresergebnis zu erläutern.","Could you explain the impact on the full-year result?","What does this mean for our full-year performance?"],
+ ["Management Reviews","Sage, dass du zunächst die wesentlichen Fakten zusammenfassen möchtest.","Let me briefly summarize the key facts first.","I'd like to start with a short summary of the main points."],
+ ["Management Reviews","Bitte darum, eine Entscheidung und einen Verantwortlichen festzulegen.","Let's agree on a decision and assign an owner.","We need a clear decision and someone accountable for the next steps."],
+ ["Management Reviews","Frage, ob die Maßnahmen bereits Wirkung zeigen.","Are the measures already having an impact?","Have we started to see the effects of these actions?"],
+ ["Management Reviews","Schließe das Thema ab und gehe zum nächsten Tagesordnungspunkt über.","Let's close this topic and move on to the next agenda item.","I suggest we move on to the next point."],
+
+ ["Leadership","Sage, dass das Team Verantwortung für die Umsetzung übernehmen soll.","The team needs to take ownership of the implementation.","I expect the team to take responsibility for delivering the changes."],
+ ["Leadership","Hinterfrage eine Annahme auf konstruktive Weise.","I'd like to challenge one of our assumptions.","Can we take a closer look at the assumption behind this decision?"],
+ ["Leadership","Erkläre, dass du eine klare Priorisierung benötigst.","We need to establish clear priorities.","I need us to agree on what matters most."],
+ ["Leadership","Bedanke dich dafür, dass jemand ein kritisches Thema angesprochen hat.","Thank you for raising this important issue.","I appreciate you bringing this to our attention."],
+ ["Leadership","Sage, dass Veränderungen konsequent umgesetzt werden müssen.","We need to follow through on the changes.","It's important that we implement the agreed improvements consistently."],
+ ["Leadership","Bitte um einen konkreten Maßnahmenplan mit Verantwortlichen und Fristen.","Please prepare a concrete action plan with owners and deadlines.","We need clear actions, responsibilities and due dates."]
+].map((x,i)=>({
+ id:"scenario-"+i,
+ topic:x[0],
+ prompt:x[1],
+ answer:x[2],
+ alternative:x[3],
+ cardId:null,
+ source:"Business-Situation"
+}));
+
+let activityCurrent={sentence:null,speaking:null};
+let activityRevealed={sentence:false,speaking:false};
+
+function mapTopic(category){
+ const v=String(category||"").toLowerCase();
+ if(/forecast|budget|planung/.test(v))return "Budget & Forecast";
+ if(/projekt|auftrag|baustelle|order/.test(v))return "Projektgeschäft";
+ if(/review|meeting|präsent|comment/.test(v))return "Management Reviews";
+ if(/leader|führung|kommunikation/.test(v))return "Leadership";
+ return "Group Controlling";
+}
+
+function exercisePool(topic){
+ const scenarios=SCENARIOS.filter(x=>
+  topic==="all"||x.topic===topic
+ );
+
+ const fromCards=knownCards()
+  .filter(c=>c.example&&c.example.trim())
+  .filter(c=>topic==="all"||mapTopic(c.category)===topic)
+  .map(c=>({
+   id:"card-"+c.id,
+   topic:mapTopic(c.category),
+   prompt:"Formuliere einen eigenen Business-Satz mit der deutschen Redewendung: „"+c.de+"“.",
+   answer:c.example,
+   alternative:"Zielausdruck: "+c.en,
+   cardId:c.id,
+   source:"Deine gelernte Karte"
+  }));
+
+ return [...scenarios,...fromCards];
+}
+
+function chooseExercise(kind){
+ const topic=$(kind+"Topic").value;
+ const pool=exercisePool(topic);
+
+ if(!pool.length){
+  activityCurrent[kind]=null;
+  return;
+ }
+
+ const counts=new Map();
+ for(const e of db.activityHistory){
+  if(e.kind===kind){
+   counts.set(
+    e.exerciseId,
+    (counts.get(e.exerciseId)||0)+1
+   );
+  }
+ }
+
+ pool.sort((a,b)=>
+  (counts.get(a.id)||0)-(counts.get(b.id)||0)
+ );
+
+ const minimum=counts.get(pool[0].id)||0;
+ const tied=pool.filter(x=>
+  (counts.get(x.id)||0)===minimum
+ );
+
+ activityCurrent[kind]=tied[
+  Math.floor(Math.random()*tied.length)
+ ];
+ activityRevealed[kind]=false;
+
+ if(kind==="sentence")$("sentenceInput").value="";
+}
+
+function renderActivity(kind){
+ if(!activityCurrent[kind])chooseExercise(kind);
+ const e=activityCurrent[kind];
+
+ $(kind+"Prompt").textContent=e
+  ?e.prompt
+  :"Für dieses Thema ist noch keine Aufgabe vorhanden.";
+
+ $(kind+"Source").textContent=e
+  ?e.topic+" · "+e.source
+  :"Keine Aufgabe";
+
+ $(kind+"Solution").classList.toggle(
+  "hidden",!activityRevealed[kind]
+ );
+ $(kind+"Ratings").classList.toggle(
+  "hidden",!activityRevealed[kind]
+ );
+
+ $(kind+"Reveal").textContent=activityRevealed[kind]
+  ?"Musterlösung ausblenden"
+  :"Musterlösung anzeigen";
+
+ if(e){
+  $(kind+"Answer").textContent=e.answer;
+  $(kind+"Alt").textContent=e.alternative||"";
+ }
+}
+
+function revealActivity(kind){
+ if(!activityCurrent[kind])return;
+ activityRevealed[kind]=!activityRevealed[kind];
+ renderActivity(kind);
+}
+
+function nextActivity(kind){
+ chooseExercise(kind);
+ renderActivity(kind);
+}
+
+function rateActivity(kind,score){
+ const e=activityCurrent[kind];
+ if(storageBlocked||!e||!activityRevealed[kind])return;
+
+ db.activityHistory.push({
+  id:uuid(),
+  kind,
+  exerciseId:e.id,
+  cardId:e.cardId,
+  topic:e.topic,
+  prompt:e.prompt,
+  score,
+  timestamp:clock()
+ });
+
+ if(save())nextActivity(kind);
+}
+
+function speakText(s){
+ if(!s||!("speechSynthesis" in window)){
+  return alert("Aussprache wird von diesem Browser nicht unterstützt.");
+ }
+
+ const u=new SpeechSynthesisUtterance(s);
+ u.lang=db.accent;
+ u.rate=.88;
+ speechSynthesis.cancel();
+ speechSynthesis.speak(u);
+}
+
+function renderRoutine(){
+ const r=db.routine;
+ $("routineBar").classList.toggle("hidden",!r.active);
+ if(!r.active)return;
+
+ const phases=[
+  "1/3 · Karteikarten",
+  "2/3 · Sätze bilden",
+  "3/3 · Sprechen"
+ ];
+
+ $("routineTitle").textContent=
+  "15-Minuten-Routine · "+phases[r.step];
+
+ const minutes=Math.floor(
+  (clock()-r.phaseStart)/MIN
+ );
+
+ $("routineTime").textContent=
+  "Empfohlen: 5 Minuten je Phase · bisher "+
+  Math.max(0,minutes)+
+  " Min. in dieser Phase. Du entscheidest über den Wechsel.";
+
+ $("routineNext").textContent=r.step===2
+  ?"Routine abschließen"
+  :"Nächste Phase";
+}
+
+function startRoutine(){
+ if(storageBlocked)return alert(storageError);
+ db.routine={
+  active:true,
+  step:0,
+  phaseStart:clock()
+ };
+ save();
+ setType("daily");
+ renderRoutine();
+}
+
+function nextRoutine(){
+ if(!db.routine.active)return;
+
+ if(db.routine.step>=2){
+  endRoutine();
+  return;
+ }
+
+ if(db.routine.step===0){
+  db.session.active=false;
+  activeCard=null;
+  revealed=false;
+ }
+
+ db.routine.step++;
+ db.routine.phaseStart=clock();
+ save();
+
+ page(db.routine.step===1?"sentence":"speaking");
+}
+
+function endRoutine(){
+ db.routine.active=false;
+ db.session.active=false;
+ activeCard=null;
+ save();
+ page("home");
+}
+
+function showWarning(){
+ if(storageError){
+  $("warning").textContent=storageError;
+  $("warning").classList.remove("hidden");
+ }
+}
+
+function status(c){
+ if(!c.seen)return "Neu";
+ if(c.lastRating===0)return "In Bearbeitung";
+ if(c.lastRating===1)return "Unsicher";
+ if(c.lastRating===2&&c.streakDays>=3&&c.interval>=14)
+  return "Sicher";
+ return "Im Lernprozess";
+}
+
 const dueCards=()=>db.cards.filter(c=>c.seen&&c.due<=clock());
 const newCards=()=>db.cards.filter(c=>!c.seen);
 const knownCards=()=>db.cards.filter(c=>c.seen>0);
-const todayNew=()=>db.cards.filter(c=>c.introduced===today()).length;
-function nextDue(){return db.cards.filter(c=>c.seen&&c.due>clock()).sort((a,b)=>a.due-b.due)[0]}
-function page(name){document.querySelectorAll("main section").forEach(s=>s.classList.toggle("on",s.id===name));document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.page===name));({home,learn:renderLearn,cards:renderCards,progress,settings}[name])()}
-function home(){
- $("total").textContent=db.cards.length;$("due").textContent=dueCards().length;$("fresh").textContent=newCards().length;$("mastered").textContent=db.cards.filter(c=>status(c)==="Sicher").length;
- $("daily").textContent=todayNew()+" von "+db.limit+" empfohlenen neuen Karten heute begonnen · "+dueCards().length+" Wiederholungen fällig.";
- $("startDaily").querySelector("small").textContent="Fällige Wiederholungen und bis zu "+db.limit+" neue Karten (Empfehlung)";
- $("resume").classList.toggle("hidden",!db.session.active);
- $("resume").textContent="Laufende Sitzung fortsetzen ("+({daily:"Tagestraining",review:"Bekannte Karten",new:"Neue Karten"}[db.session.type]||"Tagestraining")+")";
- const n=nextDue();$("upcoming").textContent=n?"Nächste geplante Wiederholung: "+fmt(n.due)+". Du darfst vorher freiwillig üben.":"Keine zukünftigen Wiederholungen vorgemerkt.";
+const todayNew=()=>db.cards.filter(
+ c=>c.introduced===today()
+).length;
+
+function nextDue(){
+ return db.cards.filter(c=>c.seen&&c.due>clock())
+  .sort((a,b)=>a.due-b.due)[0];
 }
+
+function page(name){
+ document.querySelectorAll("main section").forEach(
+  s=>s.classList.toggle("on",s.id===name)
+ );
+
+ document.querySelectorAll("nav button").forEach(
+  b=>b.classList.toggle("on",b.dataset.page===name)
+ );
+
+ ({
+  home,
+  learn:renderLearn,
+  sentence:()=>renderActivity("sentence"),
+  speaking:()=>renderActivity("speaking"),
+  cards:renderCards,
+  progress,
+  settings
+ }[name])();
+
+ renderRoutine();
+}
+
+function home(){
+ $("total").textContent=db.cards.length;
+ $("due").textContent=dueCards().length;
+ $("fresh").textContent=newCards().length;
+ $("mastered").textContent=db.cards.filter(
+  c=>status(c)==="Sicher"
+ ).length;
+
+ $("daily").textContent=
+  todayNew()+" von "+db.limit+
+  " empfohlenen neuen Karten heute begonnen · "+
+  dueCards().length+" Wiederholungen fällig.";
+
+ $("startDaily").querySelector("small").textContent=
+  "Fällige Wiederholungen und bis zu "+
+  db.limit+" neue Karten (Empfehlung)";
+
+ $("resume").classList.toggle(
+  "hidden",!db.session.active
+ );
+
+ $("resume").textContent=
+  "Laufende Sitzung fortsetzen ("+
+  ({
+   daily:"Tagestraining",
+   review:"Bekannte Karten",
+   new:"Neue Karten"
+  }[db.session.type]||"Tagestraining")+")";
+
+ const n=nextDue();
+ $("upcoming").textContent=n
+  ?"Nächste geplante Wiederholung: "+fmt(n.due)+
+   ". Du darfst vorher freiwillig üben."
+  :"Keine zukünftigen Wiederholungen vorgemerkt.";
+}
+
 function setType(type){
  if(storageBlocked)return alert(storageError);
- db.session={active:true,type,ratings:0,practice:0,newCards:0};
- activeCard=null;revealed=false;forcedNew=false;reviewCount.clear();reviewDelay.clear();
- save();advance();
+
+ db.session={
+  active:true,
+  type,
+  ratings:0,
+  practice:0,
+  newCards:0
+ };
+
+ activeCard=null;
+ revealed=false;
+ forcedNew=false;
+ reviewCount.clear();
+ reviewDelay.clear();
+
+ save();
+ advance();
 }
-function resume(){if(!db.session.active)return setType("daily");if(!activeCard)advance();else page("learn")}
+
+function resume(){
+ if(!db.session.active)return setType("daily");
+ if(!activeCard)advance();
+ else page("learn");
+}
+
 function pick(){
  const type=db.session.type;
+
  if(type==="daily"){
   const due=dueCards().sort((a,b)=>a.due-b.due);
   if(due.length)return [due[0],"scheduled"];
+
   const fresh=newCards();
   if(fresh.length&&(todayNew()<db.limit||forcedNew)){
-   const c=fresh[Math.floor(Math.random()*fresh.length)];forcedNew=false;return [c,"new"];
+   const c=fresh[Math.floor(Math.random()*fresh.length)];
+   forcedNew=false;
+   return [c,"new"];
+  }
+
+  return [null,"pause"];
+ }
+
+ if(type==="new"){
+  const fresh=newCards();
+  if(fresh.length){
+   return [
+    fresh[Math.floor(Math.random()*fresh.length)],
+    "new"
+   ];
   }
   return [null,"pause"];
  }
- if(type==="new"){
-  const fresh=newCards();
-  if(fresh.length)return [fresh[Math.floor(Math.random()*fresh.length)],"new"];
-  return [null,"pause"];
- }
+
  if(type==="review"){
-  const pool=knownCards().filter(c=>(reviewDelay.get(c.id)||0)<=clock());
+  const pool=knownCards().filter(c=>
+   (reviewDelay.get(c.id)||0)<=clock()
+  );
+
   if(!pool.length)return [null,"pause"];
-  pool.sort((a,b)=>(reviewCount.get(a.id)||0)-(reviewCount.get(b.id)||0));
+
+  pool.sort((a,b)=>
+   (reviewCount.get(a.id)||0)-
+   (reviewCount.get(b.id)||0)
+  );
+
   const m=reviewCount.get(pool[0].id)||0;
-  const least=pool.filter(c=>(reviewCount.get(c.id)||0)===m);
-  return [least[Math.floor(Math.random()*least.length)],"practice"];
+  const least=pool.filter(c=>
+   (reviewCount.get(c.id)||0)===m
+  );
+
+  return [
+   least[Math.floor(Math.random()*least.length)],
+   "practice"
+  ];
  }
+
  return [null,"pause"];
 }
-function advance(){[activeCard,mode]=pick();revealed=false;save();page("learn")}
+
+function advance(){
+ [activeCard,mode]=pick();
+ revealed=false;
+ save();
+ page("learn");
+}
+
 function renderLearn(){
- const c=activeCard, type=db.session.type;
- $("sessionInfo").textContent=({daily:"Tagestraining",review:"Nur bekannte Karten",new:"Neue Karten"}[type]||"Tagestraining")+" · "+db.session.ratings+" Lernbewertungen · "+db.session.practice+" freie Übungen · "+db.session.newCards+" neue Karten in dieser Sitzung";
- $("ratings").classList.add("hidden");$("flash").disabled=!c;
- for(const id of ["nextNew","practice","dailySwitch"])$(id).classList.add("hidden");
- if(!db.session.active){$("word").textContent="Starte auf der Startseite";$("waitInfo").textContent="";return}
+ const c=activeCard;
+ const type=db.session.type;
+
+ $("sessionInfo").textContent=
+  ({
+   daily:"Tagestraining",
+   review:"Nur bekannte Karten",
+   new:"Neue Karten"
+  }[type]||"Tagestraining")+
+  " · "+db.session.ratings+" Lernbewertungen · "+
+  db.session.practice+" freie Übungen · "+
+  db.session.newCards+" neue Karten in dieser Sitzung";
+
+ $("ratings").classList.add("hidden");
+ $("flash").disabled=!c;
+
+ for(const id of ["nextNew","practice","dailySwitch"]){
+  $(id).classList.add("hidden");
+ }
+
+ if(!db.session.active){
+  $("word").textContent="Starte auf der Startseite";
+  $("waitInfo").textContent="";
+  return;
+ }
+
  if(!c){
-  $("side").textContent="WEITERLERNEN";$("mode").textContent="Pause";$("state").textContent="";$("example").textContent="";$("hint").textContent="Nur du beendest dein Training.";
+  $("side").textContent="WEITERLERNEN";
+  $("mode").textContent="Pause";
+  $("state").textContent="";
+  $("example").textContent="";
+  $("hint").textContent="Nur du beendest dein Training.";
+
   if(type==="daily"){
    $("word").textContent="Deine Tagesempfehlung ist erledigt";
-   $("nextNew").classList.toggle("hidden",!newCards().length);
-   $("practice").classList.toggle("hidden",!knownCards().length);
+   $("nextNew").classList.toggle(
+    "hidden",!newCards().length
+   );
+   $("practice").classList.toggle(
+    "hidden",!knownCards().length
+   );
   }else if(type==="review"){
-   $("word").textContent=knownCards().length?"Kurze Übungspause":"Noch keine bekannten Karten";
+   $("word").textContent=knownCards().length
+    ?"Kurze Übungspause"
+    :"Noch keine bekannten Karten";
    $("dailySwitch").classList.remove("hidden");
   }else{
    $("word").textContent="Alle neuen Karten wurden begonnen";
-   $("practice").classList.toggle("hidden",!knownCards().length);
+   $("practice").classList.toggle(
+    "hidden",!knownCards().length
+   );
    $("dailySwitch").classList.remove("hidden");
   }
-  const upcoming=nextDue();$("waitInfo").textContent=upcoming?"Nächste Pflichtwiederholung: "+fmt(upcoming.due):"Keine weitere Pflichtwiederholung geplant.";
+
+  const upcoming=nextDue();
+  $("waitInfo").textContent=upcoming
+   ?"Nächste Pflichtwiederholung: "+fmt(upcoming.due)
+   :"Keine weitere Pflichtwiederholung geplant.";
+
   return;
  }
- $("mode").textContent=mode==="scheduled"?"Fällige Wiederholung":mode==="new"?"Neue Karte":"Freies Üben";
+
+ $("mode").textContent=mode==="scheduled"
+  ?"Fällige Wiederholung"
+  :mode==="new"?"Neue Karte":"Freies Üben";
+
  $("state").textContent=status(c);
  $("side").textContent=revealed?"ENGLISCH":"DEUTSCH";
  $("word").textContent=revealed?c.en:c.de;
  $("example").textContent=revealed?c.example:"";
- $("hint").textContent=revealed?"Tippen: zurück zur deutschen Seite":"Tippen, um die Antwort zu sehen";
+ $("hint").textContent=revealed
+  ?"Tippen: zurück zur deutschen Seite"
+  :"Tippen, um die Antwort zu sehen";
+
  $("ratings").classList.toggle("hidden",!revealed);
- $("ratingText").textContent=mode==="practice"?"Freies Üben: Bewertung speichern, ohne den nächsten Pflichttermin zu verändern.":"Wie sicher konntest du die Antwort abrufen?";
- const waiting=db.cards.filter(x=>x.lastRating===0&&x.due>clock());
- $("waitInfo").textContent=waiting.length?waiting.length+" Nochmal-Karte(n) sind für eine spätere Wiederholung vorgemerkt.":"";
+
+ $("ratingText").textContent=mode==="practice"
+  ?"Freies Üben: Bewertung speichern, ohne den nächsten Pflichttermin zu verändern."
+  :"Wie sicher konntest du die Antwort abrufen?";
+
+ const waiting=db.cards.filter(
+  x=>x.lastRating===0&&x.due>clock()
+ );
+
+ $("waitInfo").textContent=waiting.length
+  ?waiting.length+
+   " Nochmal-Karte(n) sind für eine spätere Wiederholung vorgemerkt."
+  :"";
 }
+
 function rate(r){
- if(storageBlocked||!db.session.active||!activeCard||!revealed)return;
- const c=activeCard,t=clock(),wasNew=mode==="new";
+ if(storageBlocked||!db.session.active||!activeCard||!revealed)
+  return;
+
+ const c=activeCard;
+ const t=clock();
+ const wasNew=mode==="new";
+
  if(wasNew&&!c.introduced)c.introduced=date(t);
+
  if(mode==="practice"){
-  reviewCount.set(c.id,(reviewCount.get(c.id)||0)+1);
+  reviewCount.set(
+   c.id,
+   (reviewCount.get(c.id)||0)+1
+  );
+
   if(r===0)reviewDelay.set(c.id,t+5*MIN);
   db.session.practice++;
  }else{
   c.seen++;
-  if(r===0){c.level=0;c.interval=0;c.due=t+5*MIN;c.streakDays=0}
-  else if(r===1){c.level=Math.max(1,c.level);c.interval=1;c.due=t+DAY;c.streakDays=0}
-  else{
+
+  if(r===0){
+   c.level=0;
+   c.interval=0;
+   c.due=t+5*MIN;
+   c.streakDays=0;
+  }else if(r===1){
+   c.level=Math.max(1,c.level);
+   c.interval=1;
+   c.due=t+DAY;
+   c.streakDays=0;
+  }else{
    const steps=[3,7,14,30,60,120,180];
-   c.interval=steps.find(x=>x>c.interval)||180;c.level++;c.due=t+c.interval*DAY;
-   if(!c.successDays.includes(date(t)))c.successDays.push(date(t));
-   const last=c.history.filter(e=>e.kind!=="practice").slice(-1)[0];
-   c.streakDays=(last&&last.rating===2?c.streakDays:0)+(last&&last.rating===2&&date(last.timestamp)===date(t)?0:1);
+   c.interval=steps.find(x=>x>c.interval)||180;
+   c.level++;
+   c.due=t+c.interval*DAY;
+
+   if(!c.successDays.includes(date(t))){
+    c.successDays.push(date(t));
+   }
+
+   const last=c.history.filter(
+    e=>e.kind!=="practice"
+   ).slice(-1)[0];
+
+   c.streakDays=
+    (last&&last.rating===2?c.streakDays:0)+
+    (last&&last.rating===2&&date(last.timestamp)===date(t)
+     ?0:1);
   }
-  c.lastRating=r;db.session.ratings++;if(wasNew)db.session.newCards++;
+
+  c.lastRating=r;
+  db.session.ratings++;
+  if(wasNew)db.session.newCards++;
  }
- const e={id:uuid(),cardId:c.id,de:c.de,en:c.en,timestamp:t,rating:r,due:c.due,interval:c.interval,kind:mode==="practice"?"practice":"scheduled",mode};
- c.history.push(e);db.history.push(e);
+
+ const e={
+  id:uuid(),
+  cardId:c.id,
+  de:c.de,
+  en:c.en,
+  timestamp:t,
+  rating:r,
+  due:c.due,
+  interval:c.interval,
+  kind:mode==="practice"?"practice":"scheduled",
+  mode
+ };
+
+ c.history.push(e);
+ db.history.push(e);
+
  if(save())advance();
 }
-function end(){db.session.active=false;activeCard=null;revealed=false;forcedNew=false;save();page("home")}
+
+function end(){
+ db.session.active=false;
+ activeCard=null;
+ revealed=false;
+ forcedNew=false;
+ save();
+ page("home");
+}
+
 function renderCards(){
- const q=$("search").value.trim().toLowerCase(),filter=$("filter").value;
- const cards=db.cards.filter(c=>(filter==="Alle"||status(c)===filter)&&(c.de+" "+c.en+" "+c.category).toLowerCase().includes(q));
- $("cardCount").textContent=cards.length+" von "+db.cards.length+" Karten";
- const out=$("cardList");out.replaceChildren();
+ const q=$("search").value.trim().toLowerCase();
+ const filter=$("filter").value;
+
+ const cards=db.cards.filter(c=>
+  (filter==="Alle"||status(c)===filter)&&
+  (c.de+" "+c.en+" "+c.category)
+   .toLowerCase().includes(q)
+ );
+
+ $("cardCount").textContent=
+  cards.length+" von "+db.cards.length+" Karten";
+
+ const out=$("cardList");
+ out.replaceChildren();
+
  for(const c of cards){
-  const item=document.createElement("div");item.className="item";
-  const b=document.createElement("button");b.textContent=c.de+" — "+c.en;
-  const meta=document.createElement("small");meta.textContent=c.category+" · "+status(c)+(c.seen?" · Nächste: "+fmt(c.due):"");
-  const details=document.createElement("div");details.className="hidden note";
+  const item=document.createElement("div");
+  item.className="item";
+
+  const b=document.createElement("button");
+  b.textContent=c.de+" — "+c.en;
+
+  const meta=document.createElement("small");
+  meta.textContent=c.category+" · "+status(c)+
+   (c.seen?" · Nächste: "+fmt(c.due):"");
+
+  const details=document.createElement("div");
+  details.className="hidden note";
+
   b.onclick=()=>{
    details.classList.toggle("hidden");
+
    if(!details.classList.contains("hidden")){
-    details.replaceChildren();const p=document.createElement("p");p.textContent="Status: "+status(c)+" · Erfolgreiche Tage: "+c.streakDays;details.append(p);
-    for(const [key,title] of [["de","Deutsch"],["en","Englisch"],["category","Kategorie"],["example","Beispiel"]]){
-     const l=document.createElement("label");l.textContent=title;
-     const inp=document.createElement("input");inp.value=c[key];inp.onchange=()=>{c[key]=inp.value.trim();save()};details.append(l,inp);
+    details.replaceChildren();
+
+    const p=document.createElement("p");
+    p.textContent="Status: "+status(c)+
+     " · Erfolgreiche Tage: "+c.streakDays;
+    details.append(p);
+
+    for(const [key,title] of [
+     ["de","Deutsch"],
+     ["en","Englisch"],
+     ["category","Kategorie"],
+     ["example","Beispiel"]
+    ]){
+     const l=document.createElement("label");
+     l.textContent=title;
+
+     const inp=document.createElement("input");
+     inp.value=c[key];
+
+     inp.onchange=()=>{
+      c[key]=inp.value.trim();
+      save();
+     };
+
+     details.append(l,inp);
     }
-    for(const e of c.history.slice(-5).reverse()){const p=document.createElement("p");p.textContent=fmt(e.timestamp)+" · "+["Nochmal","Unsicher","Gewusst"][e.rating]+(e.kind==="practice"?" (frei)":"");details.append(p)}
+
+    for(const e of c.history.slice(-5).reverse()){
+     const p=document.createElement("p");
+     p.textContent=fmt(e.timestamp)+" · "+
+      ["Nochmal","Unsicher","Gewusst"][e.rating]+
+      (e.kind==="practice"?" (frei)":"");
+     details.append(p);
+    }
    }
   };
-  item.append(b,document.createElement("br"),meta,details);out.append(item);
+
+  item.append(
+   b,
+   document.createElement("br"),
+   meta,
+   details
+  );
+
+  out.append(item);
  }
 }
+
 function progress(){
- const n=db.cards.length, master=db.cards.filter(c=>status(c)==="Sicher").length;
- $("started").textContent=knownCards().length;$("secure").textContent=master;
- $("rated").textContent=db.history.filter(e=>e.kind!=="practice").length;
- $("practiced").textContent=db.history.filter(e=>e.kind==="practice").length;
- const pct=n?Math.round(master/n*100):0;$("bar").value=pct;$("percent").textContent=pct+" % sicher beherrscht";
- $("statusList").replaceChildren();for(const s of ["Neu","In Bearbeitung","Unsicher","Im Lernprozess","Sicher"]){const p=document.createElement("p");p.textContent=s+": "+db.cards.filter(c=>status(c)===s).length;$("statusList").append(p)}
- const t=db.history.filter(e=>date(e.timestamp)===today());$("todayStats").textContent=t.length+" Bewertungen heute · "+t.filter(e=>e.rating===2).length+" × Gewusst · "+todayNew()+" neue Karten";
- $("history").replaceChildren();for(const e of db.history.slice(-150).reverse()){
-  const p=document.createElement("div");p.className="item";const b=document.createElement("b");b.textContent=e.de||db.cards.find(c=>c.id===e.cardId)?.de||"Karte";
-  const sub=document.createElement("div");sub.className="muted";sub.textContent=fmt(e.timestamp)+" · "+["Nochmal","Unsicher","Gewusst"][e.rating]+(e.kind==="practice"?" · Freies Üben":" · Nächste: "+fmt(e.due));p.append(b,sub);$("history").append(p);
+ const n=db.cards.length;
+ const master=db.cards.filter(
+  c=>status(c)==="Sicher"
+ ).length;
+
+ $("started").textContent=knownCards().length;
+ $("secure").textContent=master;
+
+ $("rated").textContent=db.history.filter(
+  e=>e.kind!=="practice"
+ ).length;
+
+ $("practiced").textContent=db.history.filter(
+  e=>e.kind==="practice"
+ ).length;
+
+ const pct=n?Math.round(master/n*100):0;
+ $("bar").value=pct;
+ $("percent").textContent=pct+" % sicher beherrscht";
+
+ $("sentenceTotal").textContent=db.activityHistory.filter(
+  e=>e.kind==="sentence"
+ ).length;
+
+ $("speakingTotal").textContent=db.activityHistory.filter(
+  e=>e.kind==="speaking"
+ ).length;
+
+ $("activityToday").textContent=db.activityHistory.filter(
+  e=>date(e.timestamp)===today()
+ ).length+" Satz- oder Sprechübungen heute absolviert.";
+
+ $("activityLog").replaceChildren();
+
+ for(const e of db.activityHistory.slice(-15).reverse()){
+  const row=document.createElement("div");
+  row.className="item";
+
+  const header=document.createElement("b");
+  header.textContent=
+   (e.kind==="sentence"?"Satz":"Sprechen")+
+   " · "+e.topic;
+
+  const detail=document.createElement("div");
+  detail.className="muted";
+  detail.textContent=fmt(e.timestamp)+" · "+
+   ["Nochmal","Teilweise","Gut"][e.score]+
+   " · "+e.prompt;
+
+  row.append(header,detail);
+  $("activityLog").append(row);
  }
- if(!db.history.length)$("history").textContent="Noch keine einzelnen Bewertungen gespeichert.";
+
+ $("statusList").replaceChildren();
+
+ for(const s of [
+  "Neu","In Bearbeitung","Unsicher",
+  "Im Lernprozess","Sicher"
+ ]){
+  const p=document.createElement("p");
+  p.textContent=s+": "+db.cards.filter(
+   c=>status(c)===s
+  ).length;
+  $("statusList").append(p);
+ }
+
+ const t=db.history.filter(
+  e=>date(e.timestamp)===today()
+ );
+
+ $("todayStats").textContent=t.length+
+  " Bewertungen heute · "+
+  t.filter(e=>e.rating===2).length+
+  " × Gewusst · "+todayNew()+" neue Karten";
+
+ $("history").replaceChildren();
+
+ for(const e of db.history.slice(-150).reverse()){
+  const p=document.createElement("div");
+  p.className="item";
+
+  const b=document.createElement("b");
+  b.textContent=e.de||
+   db.cards.find(c=>c.id===e.cardId)?.de||
+   "Karte";
+
+  const sub=document.createElement("div");
+  sub.className="muted";
+  sub.textContent=fmt(e.timestamp)+" · "+
+   ["Nochmal","Unsicher","Gewusst"][e.rating]+
+   (e.kind==="practice"
+    ?" · Freies Üben"
+    :" · Nächste: "+fmt(e.due));
+
+  p.append(b,sub);
+  $("history").append(p);
+ }
+
+ if(!db.history.length){
+  $("history").textContent=
+   "Noch keine einzelnen Bewertungen gespeichert.";
+ }
 }
-function settings(){$("limit").value=db.limit;$("accent").value=db.accent}
+
+function settings(){
+ $("limit").value=db.limit;
+ $("accent").value=db.accent;
+}
+
 const backupText=()=>JSON.stringify(db,null,2);
-function download(){const blob=new Blob([backupText()],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="business-english-backup-"+today()+".json";a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);$("backupInfo").textContent="Download gestartet. Bitte überprüfen, ob die Datei gespeichert wurde."}
-async function copyBackup(){try{await navigator.clipboard.writeText(backupText());$("backupInfo").textContent="Backup-Text kopiert."}catch(e){$("restoreText").value=backupText();$("restoreText").select();$("backupInfo").textContent="Backup-Text markiert – bitte manuell kopieren."}}
-function restore(txt){try{const restored=normalize(JSON.parse(txt));if(!confirm("Aktuellen Lernstand durch dieses Backup ersetzen?"))return;db=restored;db.session.active=false;activeCard=null;storageBlocked=false;storageError="";if(save()){ $("warning").classList.add("hidden");page("home");alert("Backup wiederhergestellt: "+db.cards.length+" Karten.")}}catch(e){alert("Backup nicht lesbar: "+e.message)}}
-function parseCSV(s,sep){const rows=[];let row=[],cell="",quote=false;for(let i=0;i<s.length;i++){const ch=s[i];if(ch==='"'){if(quote&&s[i+1]==='"'){cell+='"';i++}else quote=!quote}else if(ch===sep&&!quote){row.push(cell);cell=""}else if((ch==='\n'||ch==='\r')&&!quote){if(ch==='\r'&&s[i+1]==='\n')i++;row.push(cell);if(row.some(v=>v.trim()))rows.push(row);row=[];cell=""}else cell+=ch}row.push(cell);if(row.some(v=>v.trim()))rows.push(row);return rows}
-async function importCSV(){
- const file=$("csv").files[0];if(!file)return alert("Bitte CSV wählen.");
- const s=(await file.text()).replace(/^\uFEFF/,""),first=s.split(/\r?\n/)[0];
- const sep=(first.match(/;/g)||[]).length>=(first.match(/,/g)||[]).length?";":",";
- const rows=parseCSV(s,sep),headers=(rows.shift()||[]).map(x=>x.trim().toLowerCase());
- const de=headers.findIndex(x=>["deutsch","de","german"].includes(x)),en=headers.findIndex(x=>["englisch","en","english"].includes(x));
- const cat=headers.findIndex(x=>["kategorie","category"].includes(x)),ex=headers.findIndex(x=>["beispiel","example"].includes(x));
- if(de<0||en<0)return alert("Spalten Deutsch und Englisch fehlen.");
- let n=0;for(const row of rows){const a=(row[de]||"").trim(),b=(row[en]||"").trim();if(!a||!b||db.cards.some(c=>c.de.toLowerCase()===a.toLowerCase()&&c.en.toLowerCase()===b.toLowerCase()))continue;db.cards.push(freshCard(a,b,cat<0?"Allgemein":row[cat]||"Allgemein",ex<0?"":row[ex]||""));n++}
- save();renderCards();$("importInfo").textContent=n+" Karten importiert.";
+
+function download(){
+ const blob=new Blob(
+  [backupText()],
+  {type:"application/json"}
+ );
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;
+ a.download="business-english-backup-"+today()+".json";
+ a.click();
+
+ setTimeout(()=>URL.revokeObjectURL(url),3000);
+
+ $("backupInfo").textContent=
+  "Download gestartet. Bitte überprüfen, ob die Datei gespeichert wurde.";
 }
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>page(b.dataset.page));
-$("startDaily").onclick=()=>setType("daily");$("startReview").onclick=()=>setType("review");$("startNew").onclick=()=>setType("new");$("resume").onclick=resume;
-$("flash").onclick=()=>{if(!activeCard)return;revealed=!revealed;renderLearn()};
-document.querySelectorAll("[data-rating]").forEach(b=>b.onclick=()=>rate(+b.dataset.rating));
+
+async function copyBackup(){
+ try{
+  await navigator.clipboard.writeText(backupText());
+  $("backupInfo").textContent="Backup-Text kopiert.";
+ }catch(e){
+  $("restoreText").value=backupText();
+  $("restoreText").select();
+  $("backupInfo").textContent=
+   "Backup-Text markiert – bitte manuell kopieren.";
+ }
+}
+
+function restore(txt){
+ try{
+  const restored=normalize(JSON.parse(txt));
+
+  if(!confirm(
+   "Aktuellen Lernstand durch dieses Backup ersetzen?"
+  ))return;
+
+  db=restored;
+  db.session.active=false;
+  db.routine.active=false;
+  activeCard=null;
+  activityCurrent={sentence:null,speaking:null};
+  storageBlocked=false;
+  storageError="";
+
+  if(save()){
+   $("warning").classList.add("hidden");
+   page("home");
+   alert(
+    "Backup wiederhergestellt: "+
+    db.cards.length+" Karten."
+   );
+  }
+ }catch(e){
+  alert("Backup nicht lesbar: "+e.message);
+ }
+}
+
+function parseCSV(s,sep){
+ const rows=[];
+ let row=[],cell="",quote=false;
+
+ for(let i=0;i<s.length;i++){
+  const ch=s[i];
+
+  if(ch==='"'){
+   if(quote&&s[i+1]==='"'){
+    cell+='"';
+    i++;
+   }else{
+    quote=!quote;
+   }
+  }else if(ch===sep&&!quote){
+   row.push(cell);
+   cell="";
+  }else if((ch==='\n'||ch==='\r')&&!quote){
+   if(ch==='\r'&&s[i+1]==='\n')i++;
+   row.push(cell);
+
+   if(row.some(v=>v.trim()))rows.push(row);
+
+   row=[];
+   cell="";
+  }else{
+   cell+=ch;
+  }
+ }
+
+ row.push(cell);
+ if(row.some(v=>v.trim()))rows.push(row);
+ return rows;
+}
+
+async function importCSV(){
+ const file=$("csv").files[0];
+ if(!file)return alert("Bitte CSV wählen.");
+
+ const s=(await file.text()).replace(/^\uFEFF/,"");
+ const first=s.split(/\r?\n/)[0];
+
+ const sep=(first.match(/;/g)||[]).length>=
+  (first.match(/,/g)||[]).length?";":",";
+
+ const rows=parseCSV(s,sep);
+ const headers=(rows.shift()||[])
+  .map(x=>x.trim().toLowerCase());
+
+ const de=headers.findIndex(x=>
+  ["deutsch","de","german"].includes(x)
+ );
+ const en=headers.findIndex(x=>
+  ["englisch","en","english"].includes(x)
+ );
+ const cat=headers.findIndex(x=>
+  ["kategorie","category"].includes(x)
+ );
+ const ex=headers.findIndex(x=>
+  ["beispiel","example"].includes(x)
+ );
+
+ if(de<0||en<0){
+  return alert("Spalten Deutsch und Englisch fehlen.");
+ }
+
+ let n=0;
+
+ for(const row of rows){
+  const a=(row[de]||"").trim();
+  const b=(row[en]||"").trim();
+
+  if(!a||!b||db.cards.some(c=>
+   c.de.toLowerCase()===a.toLowerCase()&&
+   c.en.toLowerCase()===b.toLowerCase()
+  ))continue;
+
+  db.cards.push(freshCard(
+   a,b,
+   cat<0?"Allgemein":row[cat]||"Allgemein",
+   ex<0?"":row[ex]||""
+  ));
+  n++;
+ }
+
+ save();
+ renderCards();
+ $("importInfo").textContent=n+" Karten importiert.";
+}
+
+document.querySelectorAll("nav button").forEach(
+ b=>b.onclick=()=>page(b.dataset.page)
+);
+
+$("routineStart").onclick=startRoutine;
+$("routineNext").onclick=nextRoutine;
+$("routineStop").onclick=endRoutine;
+
+for(const kind of ["sentence","speaking"]){
+ $(kind+"Reveal").onclick=()=>revealActivity(kind);
+ $(kind+"Skip").onclick=()=>nextActivity(kind);
+ $(kind+"Topic").onchange=()=>nextActivity(kind);
+}
+
+document.querySelectorAll("[data-activity]").forEach(
+ b=>b.onclick=()=>rateActivity(
+  b.dataset.activity,
+  +b.dataset.score
+ )
+);
+
+$("speakingListen").onclick=()=>speakText(
+ activityCurrent.speaking&&activityCurrent.speaking.answer
+);
+
+$("startDaily").onclick=()=>setType("daily");
+$("startReview").onclick=()=>setType("review");
+$("startNew").onclick=()=>setType("new");
+$("resume").onclick=resume;
+
+$("flash").onclick=()=>{
+ if(!activeCard)return;
+ revealed=!revealed;
+ renderLearn();
+};
+
+document.querySelectorAll("[data-rating]").forEach(
+ b=>b.onclick=()=>rate(+b.dataset.rating)
+);
+
 $("end").onclick=end;
-$("nextNew").onclick=()=>{db.session.type="new";forcedNew=false;advance()};
-$("practice").onclick=()=>{db.session.type="review";reviewCount.clear();reviewDelay.clear();advance()};
-$("dailySwitch").onclick=()=>{db.session.type="daily";advance()};
-$("speak").onclick=()=>{if(!activeCard||!("speechSynthesis" in window))return;const u=new SpeechSynthesisUtterance(activeCard.en);u.lang=db.accent;u.rate=.88;speechSynthesis.cancel();speechSynthesis.speak(u)};
-$("search").oninput=renderCards;$("filter").onchange=renderCards;
-$("add").onclick=()=>{const a=$("de").value.trim(),b=$("en").value.trim();if(!a||!b)return alert("Deutsch und Englisch eingeben.");if(db.cards.some(c=>c.de.toLowerCase()===a.toLowerCase()&&c.en.toLowerCase()===b.toLowerCase()))return alert("Karte bereits vorhanden.");db.cards.push(freshCard(a,b,$("category").value.trim()||"Allgemein",$("exampleInput").value.trim()));if(save()){["de","en","category","exampleInput"].forEach(id=>$(id).value="");renderCards();alert("Karte gespeichert.")}};
-$("import").onclick=importCSV;$("limit").onchange=()=>{db.limit=+$("limit").value;save()};$("accent").onchange=()=>{db.accent=$("accent").value;save()};
-$("backup").onclick=download;$("copy").onclick=copyBackup;
-$("restore").onclick=async()=>{const f=$("restoreFile").files[0];if(f)restore(await f.text())};
-$("restorePaste").onclick=()=>restore($("restoreText").value.trim());
-showWarning();if(!storageBlocked)save();page("home");
+
+$("nextNew").onclick=()=>{
+ db.session.type="new";
+ forcedNew=false;
+ advance();
+};
+
+$("practice").onclick=()=>{
+ db.session.type="review";
+ reviewCount.clear();
+ reviewDelay.clear();
+ advance();
+};
+
+$("dailySwitch").onclick=()=>{
+ db.session.type="daily";
+ advance();
+};
+
+$("speak").onclick=()=>{
+ if(!activeCard)return;
+ speakText(activeCard.en);
+};
+
+$("search").oninput=renderCards;
+$("filter").onchange=renderCards;
+
+$("add").onclick=()=>{
+ const a=$("de").value.trim();
+ const b=$("en").value.trim();
+
+ if(!a||!b){
+  return alert("Deutsch und Englisch eingeben.");
+ }
+
+ if(db.cards.some(c=>
+  c.de.toLowerCase()===a.toLowerCase()&&
+  c.en.toLowerCase()===b.toLowerCase()
+ )){
+  return alert("Karte bereits vorhanden.");
+ }
+
+ db.cards.push(freshCard(
+  a,b,
+  $("category").value.trim()||"Allgemein",
+  $("exampleInput").value.trim()
+ ));
+
+ if(save()){
+  ["de","en","category","exampleInput"].forEach(
+   id=>$(id).value=""
+  );
+  renderCards();
+  alert("Karte gespeichert.");
+ }
+};
+
+$("import").onclick=importCSV;
+
+$("limit").onchange=()=>{
+ db.limit=+$("limit").value;
+ save();
+};
+
+$("accent").onchange=()=>{
+ db.accent=$("accent").value;
+ save();
+};
+
+$("backup").onclick=download;
+$("copy").onclick=copyBackup;
+
+$("restore").onclick=async()=>{
+ const f=$("restoreFile").files[0];
+ if(f)restore(await f.text());
+};
+
+$("restorePaste").onclick=()=>{
+ restore($("restoreText").value.trim());
+};
+
+showWarning();
+if(!storageBlocked)save();
+page("home");
+
 setInterval(()=>{
  if(storageBlocked)return;
- if(db.session.active&&!activeCard&&db.session.type==="daily"&&dueCards().length)advance();
- else if(document.querySelector("#learn.on")&&!activeCard)renderLearn();
- else if(document.querySelector("#home.on"))home();
+
+ if(db.routine.active)renderRoutine();
+
+ if(
+  db.session.active&&
+  !activeCard&&
+  db.session.type==="daily"&&
+  dueCards().length
+ ){
+  advance();
+ }else if(
+  document.querySelector("#learn.on")&&
+  !activeCard
+ ){
+  renderLearn();
+ }else if(document.querySelector("#home.on")){
+  home();
+ }
 },1000);
 </script>
 </body>
