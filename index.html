@@ -1678,5 +1678,298 @@ setInterval(()=>{
  }
 },1000);
 </script>
+
+<script>
+/* Business English Coach 1.5.1 – Satz- und Sprechtraining */
+(() => {
+  const german = [
+    "Die EBIT-Abweichung ist hauptsächlich auf höhere Projektkosten zurückzuführen.",
+    "Wir müssen die wesentlichen Ursachen der Ergebnisabweichung identifizieren.",
+    "Ich werde den Monatsbericht bis Freitag fertigstellen.",
+    "Unser Ergebnis liegt derzeit unter dem Budget.",
+    "Bitte erläutern Sie die wichtigsten Ursachen dieser Abweichung.",
+    "Unsere Zahlen müssen auf konsistenten Daten basieren.",
+    "Unser Forecast muss trotz der Unsicherheiten realistisch bleiben.",
+    "Wir sollten die wichtigsten Annahmen hinter dem Budget überprüfen.",
+    "Der Auftragseingang liegt hinter unseren Erwartungen zurück.",
+    "Ein Teil der geplanten Leistung verschiebt sich ins nächste Quartal.",
+    "Unser Ausblick für das Gesamtjahr bleibt unverändert.",
+    "Bitte berücksichtigen Sie Risiken und Chancen in Ihrem Forecast.",
+    "Verzögerungen auf einzelnen Baustellen belasten unser Ergebnis.",
+    "Haben Sie die voraussichtlichen Restkosten des Projekts aktualisiert?",
+    "Wir müssen den Projektfortschritt genauer überwachen.",
+    "Wir sollten mögliche Nachträge möglichst früh identifizieren.",
+    "Die Projektmarge liegt unter der ursprünglichen Kalkulation.",
+    "Welche Maßnahmen sind geplant, um den Rückstand aufzuholen?",
+    "Ich schlage vor, dass wir mit den wichtigsten Abweichungen beginnen.",
+    "Könnten Sie die Auswirkungen auf das Jahresergebnis erläutern?",
+    "Lassen Sie mich zuerst die wichtigsten Fakten zusammenfassen.",
+    "Wir sollten eine Entscheidung treffen und einen Verantwortlichen benennen.",
+    "Zeigen unsere Maßnahmen bereits Wirkung?",
+    "Lassen Sie uns dieses Thema abschließen und zum nächsten Punkt übergehen.",
+    "Das Team muss Verantwortung für die Umsetzung übernehmen.",
+    "Ich möchte eine unserer Annahmen hinterfragen.",
+    "Wir müssen klare Prioritäten setzen.",
+    "Vielen Dank, dass Sie dieses wichtige Thema angesprochen haben.",
+    "Wir müssen die vereinbarten Verbesserungen konsequent umsetzen.",
+    "Bitte erstellen Sie einen konkreten Maßnahmenplan mit Verantwortlichen und Fristen."
+  ];
+
+  const extra = [
+    [
+      "Budget & Forecast",
+      "Wir liegen weiterhin im Plan, unsere Jahresziele zu erreichen.",
+      "We are still on track to achieve our annual targets.",
+      "We remain on track to meet our full-year targets."
+    ],
+    [
+      "Leadership",
+      "Wir müssen die zugrunde liegenden Probleme angehen.",
+      "We need to address the underlying issues.",
+      "We should tackle the root causes."
+    ],
+    [
+      "Leadership",
+      "Unser Ziel ist es, Verbesserungen in allen Bereichen voranzutreiben.",
+      "Our goal is to drive improvements across all areas.",
+      "We aim to deliver continuous improvements."
+    ],
+    [
+      "Leadership",
+      "Die Projektleiter müssen Verantwortung für ihre Ergebnisse übernehmen.",
+      "Project managers need to take ownership of their results.",
+      "Project managers must be accountable for their results."
+    ],
+    [
+      "Management Reviews",
+      "Ich möchte die Annahme hinter unserem Wachstumsforecast hinterfragen.",
+      "I'd like to challenge the assumption behind our growth forecast.",
+      "I suggest we revisit the assumptions underlying our growth forecast."
+    ]
+  ];
+
+  const tasks = SCENARIOS.map((s, i) => ({
+    ...s,
+    id: "151-" + i,
+    prompt: german[i],
+    source: "Vorbereitete Business-Situation"
+  })).concat(extra.map((x, i) => ({
+    id: "151-extra-" + i,
+    topic: x[0],
+    prompt: x[1],
+    answer: x[2],
+    alternative: x[3],
+    source: "Vorbereitete Business-Situation",
+    cardId: null
+  })));
+
+  function cardTopic(category) {
+    const s = String(category || "").toLowerCase();
+
+    if (/forecast|budget|planung/.test(s))
+      return "Budget & Forecast";
+
+    if (/projekt|baustelle|auftrag/.test(s))
+      return "Projektgeschäft";
+
+    if (/review|meeting|komment/.test(s))
+      return "Management Reviews";
+
+    if (/leader|führung/.test(s))
+      return "Leadership";
+
+    return "Group Controlling";
+  }
+
+  const stop = new Set([
+    "the", "and", "with", "from", "that", "this",
+    "have", "will", "need", "should", "our",
+    "your", "would", "could", "into", "about",
+    "their", "there", "what", "please", "under",
+    "which", "more", "some", "than", "been",
+    "they", "them", "were", "when", "make", "take"
+  ]);
+
+  const words = text =>
+    (String(text).toLowerCase().match(/[a-z]{5,}/g) || [])
+      .filter(x => !stop.has(x));
+
+  function connected(card, task) {
+    const phrase = card.en.toLowerCase();
+    const answer = (
+      task.answer + " " + task.alternative
+    ).toLowerCase();
+
+    if (phrase.length >= 12 && answer.includes(phrase))
+      return true;
+
+    const a = words(phrase);
+    const b = words(answer);
+
+    return a.filter(x =>
+      b.some(y => x.slice(0, 5) === y.slice(0, 5))
+    ).length >= Math.min(2, a.length || 2);
+  }
+
+  exercisePool = function(topic) {
+    const known = db.cards.filter(c => c.seen > 0);
+
+    const planned = tasks
+      .filter(t => topic === "all" || t.topic === topic)
+      .map(t => {
+        const related = known.filter(c =>
+          connected(c, t)
+        );
+
+        return {
+          ...t,
+          related: related.map(c => c.id),
+          source: related.length
+            ? "Mit deinen gelernten Wörtern verknüpft"
+            : "Zusätzliche Themenübung"
+        };
+      });
+
+    const own = known
+      .filter(c =>
+        c.de.trim().split(/\s+/).length >= 5 &&
+        c.en.trim().split(/\s+/).length >= 5
+      )
+      .filter(c =>
+        topic === "all" ||
+        cardTopic(c.category) === topic
+      )
+      .map(c => ({
+        id: "151-card-" + c.id,
+        topic: cardTopic(c.category),
+        prompt: c.de,
+        answer: c.en,
+        alternative: c.example || "",
+        source: "Deine gelernte Karte",
+        cardId: c.id,
+        related: [c.id]
+      }));
+
+    return [...own, ...planned];
+  };
+
+  chooseExercise = function(kind) {
+    const list = exercisePool(
+      $(kind + "Topic").value
+    );
+
+    if (!list.length) {
+      activityCurrent[kind] = null;
+      return;
+    }
+
+    const counts = new Map();
+
+    for (const e of db.activityHistory) {
+      if (e.kind === kind) {
+        counts.set(
+          e.exerciseId,
+          (counts.get(e.exerciseId) || 0) + 1
+        );
+      }
+    }
+
+    const rank = e => e.related?.length ? 0 : 1;
+
+    list.sort((a, b) =>
+      rank(a) - rank(b) ||
+      (counts.get(a.id) || 0) -
+      (counts.get(b.id) || 0)
+    );
+
+    const best = list[0];
+
+    const tied = list.filter(e =>
+      rank(e) === rank(best) &&
+      (counts.get(e.id) || 0) ===
+      (counts.get(best.id) || 0)
+    );
+
+    activityCurrent[kind] = tied[
+      Math.floor(Math.random() * tied.length)
+    ];
+
+    activityRevealed[kind] = false;
+
+    if (kind === "sentence") {
+      $("sentenceInput").value = "";
+    }
+  };
+
+  renderActivity = function(kind) {
+    if (!activityCurrent[kind]) {
+      chooseExercise(kind);
+    }
+
+    const e = activityCurrent[kind];
+
+    $(kind + "Prompt").textContent = e
+      ? "„" + e.prompt + "“"
+      : "Keine Aufgabe verfügbar.";
+
+    $(kind + "Source").textContent = e
+      ? e.topic + " · " + e.source
+      : "Keine Aufgabe";
+
+    $(kind + "Reveal").disabled = !e;
+
+    $(kind + "Solution").classList.toggle(
+      "hidden",
+      !activityRevealed[kind]
+    );
+
+    $(kind + "Ratings").classList.toggle(
+      "hidden",
+      !activityRevealed[kind]
+    );
+
+    $(kind + "Reveal").textContent =
+      activityRevealed[kind]
+        ? "Musterlösung ausblenden"
+        : "Englische Musterlösung aufdecken";
+
+    if (e) {
+      $(kind + "Answer").textContent = e.answer;
+
+      $(kind + "Alt").textContent =
+        e.alternative
+          ? "Alternative: " + e.alternative
+          : "";
+    }
+  };
+
+  document.querySelector(
+    "header small"
+  ).textContent =
+    "Version 1.5.1 · Sätze und Sprechen aus deinem Wortschatz";
+
+  document.title =
+    "Business English Coach 1.5.1";
+
+  document.querySelector(
+    "#sentence .panel > .muted"
+  ).textContent =
+    "Übersetze einen deutschen Business-Satz schriftlich. Vergleiche ihn mit der Musterlösung. KI-Feedback folgt später.";
+
+  document.querySelector(
+    "#speaking .panel > .muted"
+  ).textContent =
+    "Übersetze einen vollständigen deutschen Satz laut ins Englische und decke danach die englische Musterlösung auf.";
+
+  if (document.querySelector("#sentence.on")) {
+    renderActivity("sentence");
+  }
+
+  if (document.querySelector("#speaking.on")) {
+    renderActivity("speaking");
+  }
+})();
+</script>
+
 </body>
 </html>
